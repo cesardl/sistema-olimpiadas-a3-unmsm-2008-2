@@ -1,23 +1,11 @@
 package pe.edu.unmsm.fisi.splash;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import javax.swing.*;
 
 public class JDialogSplash extends JDialog {
 
-    private static final Logger LOG = LoggerFactory.getLogger(JDialogSplash.class);
-
     public JDialogSplash(java.awt.Frame parent, ModalityType modal) {
         super(parent, modal);
-        if (System.getProperty("os.name").contains("Windows")) {
-            try {
-                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-            } catch (ClassNotFoundException | IllegalAccessException | InstantiationException | UnsupportedLookAndFeelException ex) {
-                LOG.error(ex.getMessage(), ex);
-            }
-        }
 
         initComponents();
 

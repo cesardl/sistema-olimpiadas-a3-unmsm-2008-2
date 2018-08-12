@@ -4,34 +4,27 @@ import pe.edu.unmsm.fisi.clases.Deporte;
 import pe.edu.unmsm.fisi.clases.Equipo;
 import pe.edu.unmsm.fisi.clases.ListaDeportes;
 import pe.edu.unmsm.fisi.clases.ListaPaises;
-import pe.edu.unmsm.fisi.Principal.jFramePrincipal;
+import pe.edu.unmsm.fisi.Principal.JFramePrincipal;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
-import javax.swing.UIManager;
 
-public class jDialogCentroInscripciones extends javax.swing.JDialog implements Observer {
+public class JDialogCentroInscripciones extends javax.swing.JDialog implements Observer {
 
     private DefaultListModel dlmDelegacion;
     private Observable o;
-    private jFramePrincipal vp;
-    private jDialogEquipos ventEquipo;
-    private jDialogMostrarPorDeporte dmpd;
+    private JFramePrincipal vp;
+    private JDialogEquipos ventEquipo;
+    private JDialogMostrarPorDeporte dmpd;
     private ListaPaises listaPaises;
     private DefaultComboBoxModel dcbmPais;
     private ListaDeportes listaDeportes;
 
-    public jDialogCentroInscripciones(ListaDeportes bd) {
-        if (System.getProperty("os.name").contains("Windows")) {
-            try {
-                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-            } catch (Exception ex) {
-            }
-        }
+    public JDialogCentroInscripciones(ListaDeportes bd) {
         listaDeportes = bd;
         o = new Observable();
-        vp = new jFramePrincipal();
+        vp = new JFramePrincipal();
         initComponents();
         this.setTitle("Centro de Inscripciones");
         dlmDelegacion = new DefaultListModel();
@@ -44,18 +37,18 @@ public class jDialogCentroInscripciones extends javax.swing.JDialog implements O
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPane = new javax.swing.JTabbedPane();
-        jPanel = new javax.swing.JPanel();
-        jLabelPais = new javax.swing.JLabel();
+        javax.swing.JTabbedPane jTabbedPane = new javax.swing.JTabbedPane();
+        javax.swing.JPanel jPanel = new javax.swing.JPanel();
+        javax.swing.JLabel jLabelPais = new javax.swing.JLabel();
         jComboBoxPais = new javax.swing.JComboBox();
-        jButtonEntrar = new javax.swing.JButton();
-        jButtonMostrarPorDeporte = new javax.swing.JButton();
-        jLabelLimite = new javax.swing.JLabel();
-        jTextFieldLimite = new javax.swing.JTextField();
-        jPanel1 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        javax.swing.JButton jButtonEntrar = new javax.swing.JButton();
+        javax.swing.JButton jButtonMostrarPorDeporte = new javax.swing.JButton();
+        javax.swing.JLabel jLabelLimite = new javax.swing.JLabel();
+        javax.swing.JTextField jTextFieldLimite = new javax.swing.JTextField();
+        javax.swing.JPanel jPanel1 = new javax.swing.JPanel();
+        javax.swing.JScrollPane jScrollPane2 = new javax.swing.JScrollPane();
         jListDelegacion = new javax.swing.JList();
-        jButtonSalir = new javax.swing.JButton();
+        javax.swing.JButton jButtonSalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -176,14 +169,14 @@ public class jDialogCentroInscripciones extends javax.swing.JDialog implements O
                         .addComponent(jTabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 617, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(522, 522, 522)
-                        .addComponent(jButtonSalir, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)))
+                        .addComponent(jButtonSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 336, Short.MAX_VALUE)
+                .addComponent(jTabbedPane)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonSalir)
                 .addGap(24, 24, 24))
@@ -193,14 +186,14 @@ public class jDialogCentroInscripciones extends javax.swing.JDialog implements O
     }// </editor-fold>//GEN-END:initComponents
 
 private void jButtonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEntrarActionPerformed
-    ventEquipo = new jDialogEquipos(this, null, (String) jComboBoxPais.getSelectedItem(), listaDeportes);
+    ventEquipo = new JDialogEquipos(this, null, (String) jComboBoxPais.getSelectedItem(), listaDeportes);
     ventEquipo.setLocationRelativeTo(this);
     ventEquipo.setModalityType(ModalityType.APPLICATION_MODAL);
     ventEquipo.setVisible(true);
 }//GEN-LAST:event_jButtonEntrarActionPerformed
 
 private void jButtonMostrarPorDeporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMostrarPorDeporteActionPerformed
-    dmpd = new jDialogMostrarPorDeporte(listaDeportes);
+    dmpd = new JDialogMostrarPorDeporte(listaDeportes);
     dmpd.setModalityType(ModalityType.APPLICATION_MODAL);
     dmpd.setLocationRelativeTo(this);
     dmpd.setVisible(true);
@@ -237,18 +230,8 @@ private void jComboBoxPaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN
 }//GEN-LAST:event_jComboBoxPaisActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonEntrar;
-    private javax.swing.JButton jButtonMostrarPorDeporte;
-    private javax.swing.JButton jButtonSalir;
     private javax.swing.JComboBox jComboBoxPais;
-    private javax.swing.JLabel jLabelLimite;
-    private javax.swing.JLabel jLabelPais;
     private javax.swing.JList jListDelegacion;
-    private javax.swing.JPanel jPanel;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTabbedPane jTabbedPane;
-    private javax.swing.JTextField jTextFieldLimite;
     // End of variables declaration//GEN-END:variables
 
     public void llenarComboBox() {

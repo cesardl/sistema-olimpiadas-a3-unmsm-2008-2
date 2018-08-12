@@ -5,17 +5,30 @@
  */
 package pe.edu.unmsm.fisi;
 
-import pe.edu.unmsm.fisi.Principal.jFrameBienvenida;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import pe.edu.unmsm.fisi.Principal.JFrameBienvenida;
+
+import javax.swing.*;
 
 /**
  * @author Cesardl
  */
 public class OlympicGamesApp {
 
+    private static final Logger LOG = LoggerFactory.getLogger(OlympicGamesApp.class);
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(() -> new jFrameBienvenida().setVisible(true));
+        if (System.getProperty("os.name").contains("Windows")) {
+            try {
+                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            } catch (ClassNotFoundException | IllegalAccessException | InstantiationException | UnsupportedLookAndFeelException ex) {
+                LOG.error(ex.getMessage(), ex);
+            }
+        }
+        javax.swing.SwingUtilities.invokeLater(() -> new JFrameBienvenida().setVisible(true));
     }
 }

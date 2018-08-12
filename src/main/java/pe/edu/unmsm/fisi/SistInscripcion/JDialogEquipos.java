@@ -10,18 +10,17 @@ import java.util.Observer;
 import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
-import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 
-public class jDialogEquipos extends javax.swing.JDialog implements Observer {
+public class JDialogEquipos extends javax.swing.JDialog implements Observer {
 
-    private jDialogCentroInscripciones vci;
+    private JDialogCentroInscripciones vci;
     private Observable o;
     private DefaultTableModel dtmEquipo;
     private DefaultComboBoxModel dcbmDeporte;
     private DefaultComboBoxModel dcbmPais;
-    private jDialogDeportista ventEditar;
-    private jDialogMostrarPorDeporte dmpd;
+    private JDialogDeportista ventEditar;
+    private JDialogMostrarPorDeporte dmpd;
     private Equipo equipoTemporal;
     private ListaDeportes listaDeportes;
     private ListaPaises listaPaises;
@@ -29,17 +28,11 @@ public class jDialogEquipos extends javax.swing.JDialog implements Observer {
     private int inscritosIni, inscritos, limite, edicion;
     private boolean guardado, modificado;
 
-    public jDialogEquipos(jDialogCentroInscripciones vci, String deporte, String pais, ListaDeportes listaDeportes) {
+    public JDialogEquipos(JDialogCentroInscripciones vci, String deporte, String pais, ListaDeportes listaDeportes) {
         o = new Observable();
         this.listaDeportes = listaDeportes;
         listaPaises = new ListaPaises();
         this.vci = vci;
-        if (System.getProperty("os.name").contains("Windows")) {
-            try {
-                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-            } catch (Exception ex) {
-            }
-        }
         initComponents();
 
         dtmEquipo = (DefaultTableModel) jTableParticipantes.getModel();
@@ -57,24 +50,24 @@ public class jDialogEquipos extends javax.swing.JDialog implements Observer {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel = new javax.swing.JPanel();
-        jlabelDeporte = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        javax.swing.JPanel jPanel = new javax.swing.JPanel();
+        javax.swing.JLabel jlabelDeporte = new javax.swing.JLabel();
+        javax.swing.JScrollPane jScrollPane1 = new javax.swing.JScrollPane();
         jTableParticipantes = new javax.swing.JTable();
         jButtonAgregar = new javax.swing.JButton();
         jButtonEditar = new javax.swing.JButton();
         jButtonEliminar = new javax.swing.JButton();
-        jLabelLimiteDeportistas = new javax.swing.JLabel();
+        javax.swing.JLabel jLabelLimiteDeportistas = new javax.swing.JLabel();
         jTextFieldLimiteDeportistas = new javax.swing.JTextField();
-        jLabelPais = new javax.swing.JLabel();
+        javax.swing.JLabel jLabelPais = new javax.swing.JLabel();
         jComboBoxPais = new javax.swing.JComboBox();
         jButtonMostrar = new javax.swing.JButton();
         jButtonGuardar = new javax.swing.JButton();
         jTextFieldInscritos = new javax.swing.JTextField();
-        jLabelInscritos = new javax.swing.JLabel();
+        javax.swing.JLabel jLabelInscritos = new javax.swing.JLabel();
         jComboBoxDeporte = new javax.swing.JComboBox();
-        jButtonAceptar = new javax.swing.JButton();
-        jButtonCancelar = new javax.swing.JButton();
+        javax.swing.JButton jButtonAceptar = new javax.swing.JButton();
+        javax.swing.JButton jButtonCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Equipos");
@@ -171,12 +164,8 @@ public class jDialogEquipos extends javax.swing.JDialog implements Observer {
                             .addComponent(jTextFieldInscritos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
                             .addComponent(jLabelInscritos, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelLimiteDeportistas, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelLayout.createSequentialGroup()
-                                .addComponent(jButtonEditar, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                            .addGroup(jPanelLayout.createSequentialGroup()
-                                .addComponent(jButtonAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))))
+                            .addComponent(jButtonEditar, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
+                            .addComponent(jButtonAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)))
                     .addGroup(jPanelLayout.createSequentialGroup()
                         .addComponent(jLabelPais)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -272,7 +261,7 @@ private void jButtonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GE
         String deporte = equipoTemporal.getDeporte();
         String pais = equipoTemporal.getPais();
         int posDeporte = jComboBoxDeporte.getSelectedIndex();
-        jDialogDeportista ventanaDeportista = new jDialogDeportista(this, deporte, pais, null, posDeporte);
+        JDialogDeportista ventanaDeportista = new JDialogDeportista(this, deporte, pais, null, posDeporte);
         ventanaDeportista.setTitle("Nuevo deportista");
         ventanaDeportista.setModalityType(ModalityType.APPLICATION_MODAL);
         ventanaDeportista.setLocationRelativeTo(this);
@@ -294,7 +283,7 @@ private void jButtonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN
         String deporte = (String) jComboBoxDeporte.getSelectedItem();
         String pais = (String) jComboBoxDeporte.getSelectedItem();
         int posDeporte = jComboBoxDeporte.getSelectedIndex();
-        ventEditar = new jDialogDeportista(this, deporte, pais, d, posDeporte);
+        ventEditar = new JDialogDeportista(this, deporte, pais, d, posDeporte);
         ventEditar.setTitle("Editar Deportista");
         ventEditar.setModalityType(ModalityType.APPLICATION_MODAL);
         ventEditar.setLocationRelativeTo(this);
@@ -352,24 +341,16 @@ private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//G
 }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonAceptar;
     private javax.swing.JButton jButtonAgregar;
-    private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonEditar;
     private javax.swing.JButton jButtonEliminar;
     private javax.swing.JButton jButtonGuardar;
     private javax.swing.JButton jButtonMostrar;
     private javax.swing.JComboBox jComboBoxDeporte;
     private javax.swing.JComboBox jComboBoxPais;
-    private javax.swing.JLabel jLabelInscritos;
-    private javax.swing.JLabel jLabelLimiteDeportistas;
-    private javax.swing.JLabel jLabelPais;
-    private javax.swing.JPanel jPanel;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableParticipantes;
     private javax.swing.JTextField jTextFieldInscritos;
     private javax.swing.JTextField jTextFieldLimiteDeportistas;
-    private javax.swing.JLabel jlabelDeporte;
     // End of variables declaration//GEN-END:variables
 
     public void mostrarEquipo() {
@@ -439,7 +420,7 @@ private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//G
                     "Error",
                     JOptionPane.YES_NO_CANCEL_OPTION);
             if (opcion == JOptionPane.YES_OPTION) {
-                dmpd = new jDialogMostrarPorDeporte(listaDeportes);
+                dmpd = new JDialogMostrarPorDeporte(listaDeportes);
                 dmpd.setModalityType(ModalityType.APPLICATION_MODAL);
                 dmpd.setLocationRelativeTo(this);
                 dmpd.setVisible(true);

@@ -2,16 +2,14 @@ package pe.edu.unmsm.fisi.Principal;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import pe.edu.unmsm.fisi.SistInscripcion.jDialogCentroInscripciones;
+import pe.edu.unmsm.fisi.SistInscripcion.JDialogCentroInscripciones;
 import pe.edu.unmsm.fisi.clases.ListaDeportes;
-import pe.edu.unmsm.fisi.SistAsistencia.jDialogControlAsistencia;
+import pe.edu.unmsm.fisi.SistAsistencia.JDialogControlAsistencia;
 import pe.edu.unmsm.fisi.SistEventos.JDialogVerAsistencia;
+
+import java.awt.*;
 import java.awt.Dialog.ModalityType;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.*;
@@ -19,9 +17,11 @@ import javax.swing.*;
 /**
  * Esto la clase que invoca a los otro sistemas. Esta es una ventana observaor.
  */
-public class jFramePrincipal extends javax.swing.JFrame implements Observer {
+public class JFramePrincipal extends javax.swing.JFrame implements Observer {
 
-    private static final Logger LOG = LoggerFactory.getLogger(jFramePrincipal.class);
+    private static final long serialVersionUID = 8300563018239030485L;
+
+    private static final Logger LOG = LoggerFactory.getLogger(JFramePrincipal.class);
 
     private ListaDeportes listaDeportes;
     private final ModalityType modal = ModalityType.APPLICATION_MODAL;
@@ -29,14 +29,7 @@ public class jFramePrincipal extends javax.swing.JFrame implements Observer {
     /**
      * Contructor de clase
      */
-    public jFramePrincipal() {
-        if (System.getProperty("os.name").contains("Windows")) {
-            try {
-                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-            } catch (ClassNotFoundException | IllegalAccessException | UnsupportedLookAndFeelException | InstantiationException ex) {
-                LOG.error(ex.getMessage(), ex);
-            }
-        }
+    public JFramePrincipal() {
         listaDeportes = new ListaDeportes();
         initComponents();
     }
@@ -46,24 +39,24 @@ public class jFramePrincipal extends javax.swing.JFrame implements Observer {
     private void initComponents() {
 
         jfc = new javax.swing.JFileChooser();
-        jPanel = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jMenuBar = new javax.swing.JMenuBar();
-        jMenuArchivo = new javax.swing.JMenu();
-        jMenuItemAbrirBD = new javax.swing.JMenuItem();
-        jMenuItemGuardarBD = new javax.swing.JMenuItem();
-        jSeparator = new javax.swing.JSeparator();
-        jMenuItemSalir = new javax.swing.JMenuItem();
-        jMenuInscripcion = new javax.swing.JMenu();
-        jMenuItemCentroInscripciones = new javax.swing.JMenuItem();
-        jMenuAsistencia = new javax.swing.JMenu();
-        jMenuItemControlAsistencia = new javax.swing.JMenuItem();
-        jMenuEventos = new javax.swing.JMenu();
-        jMenuItemIniciarJuegosOlimpicos = new javax.swing.JMenuItem();
-        jMenuAyuda = new javax.swing.JMenu();
-        jMenuItemTemasAyuda = new javax.swing.JMenuItem();
-        jSeparator1 = new javax.swing.JSeparator();
-        jMenuItemAcercaDe = new javax.swing.JMenuItem();
+        javax.swing.JPanel jPanel = new javax.swing.JPanel();
+        javax.swing.JLabel jLabel1 = new javax.swing.JLabel();
+        javax.swing.JMenuBar jMenuBar = new javax.swing.JMenuBar();
+        javax.swing.JMenu jMenuArchivo = new javax.swing.JMenu();
+        javax.swing.JMenuItem jMenuItemAbrirBD = new javax.swing.JMenuItem();
+        javax.swing.JMenuItem jMenuItemGuardarBD = new javax.swing.JMenuItem();
+        javax.swing.JSeparator jSeparator = new javax.swing.JSeparator();
+        javax.swing.JMenuItem jMenuItemSalir = new javax.swing.JMenuItem();
+        javax.swing.JMenu jMenuInscripcion = new javax.swing.JMenu();
+        javax.swing.JMenuItem jMenuItemCentroInscripciones = new javax.swing.JMenuItem();
+        javax.swing.JMenu jMenuAsistencia = new javax.swing.JMenu();
+        javax.swing.JMenuItem jMenuItemControlAsistencia = new javax.swing.JMenuItem();
+        javax.swing.JMenu jMenuEventos = new javax.swing.JMenu();
+        javax.swing.JMenuItem jMenuItemIniciarJuegosOlimpicos = new javax.swing.JMenuItem();
+        javax.swing.JMenu jMenuAyuda = new javax.swing.JMenu();
+        javax.swing.JMenuItem jMenuItemTemasAyuda = new javax.swing.JMenuItem();
+        javax.swing.JSeparator jSeparator1 = new javax.swing.JSeparator();
+        javax.swing.JMenuItem jMenuItemAcercaDe = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema de Juegos Olimpicos");
@@ -217,17 +210,11 @@ private void jMenuItemSalirActionPerformed(java.awt.event.ActionEvent evt) {//GE
      * informacion de los desarrolladores
      */
 private void jMenuItemAcercaDeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAcercaDeActionPerformed
-    try {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-
-            public void run() {
-                jDialogAcercaDe jdad = new jDialogAcercaDe(null, modal);
-                jdad.setLocationRelativeTo(null);
-                jdad.setVisible(true);
-            }
-        });
-    } catch (Exception e) {
-    }
+    java.awt.EventQueue.invokeLater(() -> {
+        JDialogAcercaDe jdad = new JDialogAcercaDe(null, modal);
+        jdad.setLocationRelativeTo(null);
+        jdad.setVisible(true);
+    });
 }//GEN-LAST:event_jMenuItemAcercaDeActionPerformed
 
     /**
@@ -237,7 +224,7 @@ private void jMenuItemCentroInscripcionesActionPerformed(java.awt.event.ActionEv
     if (listaDeportes == null) {
         listaDeportes = new ListaDeportes();
     }
-    jDialogCentroInscripciones vci = new jDialogCentroInscripciones(listaDeportes);
+    JDialogCentroInscripciones vci = new JDialogCentroInscripciones(listaDeportes);
     vci.setModalityType(modal);
     vci.setLocationRelativeTo(this);
     vci.setVisible(true);
@@ -254,7 +241,8 @@ private void jMenuItemGuardarBDActionPerformed(java.awt.event.ActionEvent evt) {
         ObjectOutputStream oos = new ObjectOutputStream(fos);
         oos.writeObject(listaDeportes);
         oos.close();
-    } catch (Exception e) {
+    } catch (HeadlessException | IOException e) {
+        LOG.error(e.getMessage(), e);
     }
 }//GEN-LAST:event_jMenuItemGuardarBDActionPerformed
 
@@ -269,7 +257,8 @@ private void jMenuItemAbrirBDActionPerformed(java.awt.event.ActionEvent evt) {//
         ObjectInputStream ois = new ObjectInputStream(fis);
         listaDeportes = (ListaDeportes) ois.readObject();
         ois.close();
-    } catch (Exception e) {
+    } catch (HeadlessException | IOException | ClassNotFoundException e) {
+        LOG.error(e.getMessage(), e);
     }
 }//GEN-LAST:event_jMenuItemAbrirBDActionPerformed
 
@@ -277,14 +266,11 @@ private void jMenuItemAbrirBDActionPerformed(java.awt.event.ActionEvent evt) {//
      * Abre el Sistema de Control de Asistencia
      */
 private void jMenuItemControlAsistenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemControlAsistenciaActionPerformed
-    jDialogControlAsistencia vca = new jDialogControlAsistencia(this, modal, listaDeportes);
+    JDialogControlAsistencia vca = new JDialogControlAsistencia(this, modal, listaDeportes);
     vca.setLocationRelativeTo(this);
     vca.setVisible(true);
 }//GEN-LAST:event_jMenuItemControlAsistenciaActionPerformed
 
-    /**
-     * Abre el Sistema de Control de Competencias
-     */
     /**
      * Temas de Ayuda
      */
@@ -304,24 +290,6 @@ private void jMenuItemIniciarJuegosOlimpicosActionPerformed(java.awt.event.Actio
 }//GEN-LAST:event_jMenuItemIniciarJuegosOlimpicosActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenu jMenuArchivo;
-    private javax.swing.JMenu jMenuAsistencia;
-    private javax.swing.JMenu jMenuAyuda;
-    private javax.swing.JMenuBar jMenuBar;
-    private javax.swing.JMenu jMenuEventos;
-    private javax.swing.JMenu jMenuInscripcion;
-    private javax.swing.JMenuItem jMenuItemAbrirBD;
-    private javax.swing.JMenuItem jMenuItemAcercaDe;
-    private javax.swing.JMenuItem jMenuItemCentroInscripciones;
-    private javax.swing.JMenuItem jMenuItemControlAsistencia;
-    private javax.swing.JMenuItem jMenuItemGuardarBD;
-    private javax.swing.JMenuItem jMenuItemIniciarJuegosOlimpicos;
-    private javax.swing.JMenuItem jMenuItemSalir;
-    private javax.swing.JMenuItem jMenuItemTemasAyuda;
-    private javax.swing.JPanel jPanel;
-    private javax.swing.JSeparator jSeparator;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JFileChooser jfc;
     // End of variables declaration//GEN-END:variables
 

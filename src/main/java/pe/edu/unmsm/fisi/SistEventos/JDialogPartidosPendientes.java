@@ -3,7 +3,7 @@ package pe.edu.unmsm.fisi.SistEventos;
 import pe.edu.unmsm.fisi.clases.Competencia;
 import pe.edu.unmsm.fisi.clases.Equipo;
 import pe.edu.unmsm.fisi.clases.Evento;
-import pe.edu.unmsm.fisi.SistCompetencias.jDialogCompDos;
+import pe.edu.unmsm.fisi.SistCompetencias.JDialogCompDos;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
@@ -23,7 +23,7 @@ public class JDialogPartidosPendientes extends javax.swing.JDialog implements Ob
     public JDialogPartidosPendientes(Evento evento) {
         this.evento = evento;
         this.dlm = new DefaultListModel();
-        clasificados = new ArrayList<Equipo>();
+        clasificados = new ArrayList<>();
         initComponents();
         jTextFieldDeporte.setText(evento.getNombreDeporte());
         jListPartidosPendientes.setModel(dlm);
@@ -35,25 +35,13 @@ public class JDialogPartidosPendientes extends javax.swing.JDialog implements Ob
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        javax.swing.JPanel jPanel2 = new javax.swing.JPanel();
+        javax.swing.JLabel jLabel1 = new javax.swing.JLabel();
         jTextFieldDeporte = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        javax.swing.JScrollPane jScrollPane1 = new javax.swing.JScrollPane();
         jListPartidosPendientes = new javax.swing.JList();
         jButtonJugar = new javax.swing.JButton();
-        jButtonMostrarResultados = new javax.swing.JButton();
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
+        javax.swing.JButton jButtonMostrarResultados = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -168,7 +156,7 @@ public class JDialogPartidosPendientes extends javax.swing.JDialog implements Ob
             dlm.addElement(s1 + " vs " + s2);
             jButtonJugar.setEnabled(false);
         }
-        jDialogCompDos compDos = new jDialogCompDos(listaCompetencias.get(partida), this);
+        JDialogCompDos compDos = new JDialogCompDos(listaCompetencias.get(partida), this);
         compDos.setModalityType(ModalityType.APPLICATION_MODAL);
         compDos.setTitle(this.getTitle());
         compDos.setLocationRelativeTo(this);
@@ -185,12 +173,7 @@ private void jButtonMostrarResultadosActionPerformed(java.awt.event.ActionEvent 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonJugar;
-    private javax.swing.JButton jButtonMostrarResultados;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JList jListPartidosPendientes;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextFieldDeporte;
     // End of variables declaration//GEN-END:variables
 

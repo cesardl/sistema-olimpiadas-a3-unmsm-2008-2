@@ -49,13 +49,13 @@ public class JDialogVerAsistencia extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        javax.swing.JPanel jPanel1 = new javax.swing.JPanel();
+        javax.swing.JLabel jLabel1 = new javax.swing.JLabel();
         jComboBoxDeporte = new javax.swing.JComboBox();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        javax.swing.JScrollPane jScrollPane1 = new javax.swing.JScrollPane();
         jTableAsistencia = new javax.swing.JTable();
-        jButtonSiguiente = new javax.swing.JButton();
-        jButtonSalir = new javax.swing.JButton();
+        javax.swing.JButton jButtonSiguiente = new javax.swing.JButton();
+        javax.swing.JButton jButtonSalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Gestor de Eventos");
@@ -197,12 +197,7 @@ public class JDialogVerAsistencia extends javax.swing.JDialog {
         this.dispose();
     }//GEN-LAST:event_jButtonSalirActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonSalir;
-    private javax.swing.JButton jButtonSiguiente;
     private javax.swing.JComboBox jComboBoxDeporte;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableAsistencia;
     // End of variables declaration//GEN-END:variables
 

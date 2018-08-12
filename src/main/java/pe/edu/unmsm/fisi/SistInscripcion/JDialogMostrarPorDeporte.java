@@ -8,9 +8,8 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
-import javax.swing.UIManager;
 
-public class jDialogMostrarPorDeporte extends javax.swing.JDialog {
+public class JDialogMostrarPorDeporte extends javax.swing.JDialog {
 
     DefaultComboBoxModel dcbmDeporte;
     DefaultListModel dlmParticipantes;
@@ -19,13 +18,7 @@ public class jDialogMostrarPorDeporte extends javax.swing.JDialog {
     /**
      * Constructor de la clase jDialogMostrarPorDeporte
      */
-    public jDialogMostrarPorDeporte(ListaDeportes listaDeportes) {
-        if (System.getProperty("os.name").contains("Windows")) {
-            try {
-                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-            } catch (Exception ex) {
-            }
-        }
+    public JDialogMostrarPorDeporte(ListaDeportes listaDeportes) {
         initComponents();
         this.listaDeportes = listaDeportes;
         dlmParticipantes = new DefaultListModel();
@@ -43,17 +36,17 @@ public class jDialogMostrarPorDeporte extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        jMenuItemEliminar = new javax.swing.JMenuItem();
-        jPanel = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        javax.swing.JMenuItem jMenuItemEliminar = new javax.swing.JMenuItem();
+        javax.swing.JPanel jPanel = new javax.swing.JPanel();
+        javax.swing.JLabel jLabel1 = new javax.swing.JLabel();
         jComboBoxDeporte = new javax.swing.JComboBox();
-        jLabel2 = new javax.swing.JLabel();
+        javax.swing.JLabel jLabel2 = new javax.swing.JLabel();
         jTextFieldInscritos = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        javax.swing.JLabel jLabel3 = new javax.swing.JLabel();
         jTextFieldCupos = new javax.swing.JTextField();
-        jButtonAceptar = new javax.swing.JButton();
-        jPanelInscritos = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        javax.swing.JButton jButtonAceptar = new javax.swing.JButton();
+        javax.swing.JPanel jPanelInscritos = new javax.swing.JPanel();
+        javax.swing.JScrollPane jScrollPane1 = new javax.swing.JScrollPane();
         jListParticipantes = new javax.swing.JList();
 
         jMenuItemEliminar.setText("Eliminar");
@@ -137,7 +130,7 @@ public class jDialogMostrarPorDeporte extends javax.swing.JDialog {
                         .addContainerGap()
                         .addComponent(jLabel1)
                         .addGap(10, 10, 10)
-                        .addComponent(jComboBoxDeporte, 0, 214, Short.MAX_VALUE))
+                        .addComponent(jComboBoxDeporte, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanelLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jPanelInscritos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -212,17 +205,9 @@ public class jDialogMostrarPorDeporte extends javax.swing.JDialog {
     }//GEN-LAST:event_jMenuItemEliminarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonAceptar;
     private javax.swing.JComboBox jComboBoxDeporte;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JList jListParticipantes;
-    private javax.swing.JMenuItem jMenuItemEliminar;
-    private javax.swing.JPanel jPanel;
-    private javax.swing.JPanel jPanelInscritos;
     private javax.swing.JPopupMenu jPopupMenu1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextFieldCupos;
     private javax.swing.JTextField jTextFieldInscritos;
     // End of variables declaration//GEN-END:variables

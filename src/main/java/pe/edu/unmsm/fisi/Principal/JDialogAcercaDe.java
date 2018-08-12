@@ -1,5 +1,5 @@
 /*
- * jDialogAcercaDe.java
+ * JDialogAcercaDe.java
  *
  * Created on 6 de diciembre de 2008, 01:24 AM
  */
@@ -9,12 +9,12 @@ package pe.edu.unmsm.fisi.Principal;
  *
  * @author lns
  */
-public class jDialogAcercaDe extends javax.swing.JDialog {
+public class JDialogAcercaDe extends javax.swing.JDialog {
 
     /**
      * Constructor de clase
      */
-    public jDialogAcercaDe(java.awt.Frame parent, ModalityType modal) {
+    public JDialogAcercaDe(java.awt.Frame parent, ModalityType modal) {
         super(parent, modal);
         initComponents();
     }
@@ -28,10 +28,10 @@ public class jDialogAcercaDe extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel = new javax.swing.JPanel();
-        jLabelImagen = new javax.swing.JLabel();
-        jButtonCerrar = new javax.swing.JButton();
-        jLabelTexto = new javax.swing.JLabel();
+        javax.swing.JPanel jPanel = new javax.swing.JPanel();
+        javax.swing.JLabel jLabelImagen = new javax.swing.JLabel();
+        javax.swing.JButton jButtonCerrar = new javax.swing.JButton();
+        javax.swing.JLabel jLabelTexto = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Acerca de");
@@ -59,7 +59,7 @@ public class jDialogAcercaDe extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButtonCerrar, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabelTexto, javax.swing.GroupLayout.DEFAULT_SIZE, 424, Short.MAX_VALUE)
+                    .addComponent(jLabelTexto)
                     .addComponent(jLabelImagen))
                 .addContainerGap())
         );
@@ -94,9 +94,5 @@ private void jButtonCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN
 }//GEN-LAST:event_jButtonCerrarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonCerrar;
-    private javax.swing.JLabel jLabelImagen;
-    private javax.swing.JLabel jLabelTexto;
-    private javax.swing.JPanel jPanel;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,27 +1,27 @@
 package pe.edu.unmsm.fisi.SistAsistencia;
 
 import pe.edu.unmsm.fisi.clases.ListaDeportes;
-import pe.edu.unmsm.fisi.Principal.jFramePrincipal;
+import pe.edu.unmsm.fisi.Principal.JFramePrincipal;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 
-public class jDialogControlAsistencia extends javax.swing.JDialog implements Observer {
+public class JDialogControlAsistencia extends javax.swing.JDialog implements Observer {
 
     private DefaultComboBoxModel dcbmDeporte;
     private DefaultListModel dlmParticipantes;
-    private jFramePrincipal jfp;
+    private JFramePrincipal jfp;
     private ListaDeportes listaDeportes;
     private Observable observable;
     private final ModalityType modal = ModalityType.APPLICATION_MODAL;
 
-    public jDialogControlAsistencia(java.awt.Frame parent, ModalityType modal, ListaDeportes ld) {
+    public JDialogControlAsistencia(java.awt.Frame parent, ModalityType modal, ListaDeportes ld) {
         super(parent, modal);
 
         initComponents();
 
-        jfp = (jFramePrincipal) parent;
+        jfp = (JFramePrincipal) parent;
         listaDeportes = ld;
         dlmParticipantes = new DefaultListModel();
         jListPaises.setModel(dlmParticipantes);
@@ -33,16 +33,16 @@ public class jDialogControlAsistencia extends javax.swing.JDialog implements Obs
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel = new javax.swing.JPanel();
-        jPanelAsistentes = new javax.swing.JPanel();
-        jLabelDeportes = new javax.swing.JLabel();
+        javax.swing.JPanel jPanel = new javax.swing.JPanel();
+        javax.swing.JPanel jPanelAsistentes = new javax.swing.JPanel();
+        javax.swing.JLabel jLabelDeportes = new javax.swing.JLabel();
         jComboBoxDeportes = new javax.swing.JComboBox();
-        jScrollPane = new javax.swing.JScrollPane();
+        javax.swing.JScrollPane jScrollPane = new javax.swing.JScrollPane();
         jListPaises = new javax.swing.JList();
-        jButtonMostrar = new javax.swing.JButton();
-        jButtonAceptar = new javax.swing.JButton();
-        jButtonCancelar = new javax.swing.JButton();
-        jButtonTerminar = new javax.swing.JButton();
+        javax.swing.JButton jButtonMostrar = new javax.swing.JButton();
+        javax.swing.JButton jButtonAceptar = new javax.swing.JButton();
+        javax.swing.JButton jButtonCancelar = new javax.swing.JButton();
+        javax.swing.JButton jButtonTerminar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Control de Asistencia");
@@ -178,7 +178,7 @@ private void jButtonMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GE
 private void jButtonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarActionPerformed
     String titulo = String.valueOf(jComboBoxDeportes.getSelectedItem()).trim();
     int posicion = jComboBoxDeportes.getSelectedIndex();
-    jDialogMarcarAsistencia jdc = new jDialogMarcarAsistencia(null, modal, listaDeportes, posicion);
+    JDialogMarcarAsistencia jdc = new JDialogMarcarAsistencia(null, modal, listaDeportes, posicion);
     jdc.setTitle(titulo);
     jdc.setLocationRelativeTo(this);
     jdc.setVisible(true);
@@ -192,16 +192,8 @@ private void jButtonTerminarActionPerformed(java.awt.event.ActionEvent evt) {//G
 }//GEN-LAST:event_jButtonTerminarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonAceptar;
-    private javax.swing.JButton jButtonCancelar;
-    private javax.swing.JButton jButtonMostrar;
-    private javax.swing.JButton jButtonTerminar;
     private javax.swing.JComboBox jComboBoxDeportes;
-    private javax.swing.JLabel jLabelDeportes;
     private javax.swing.JList jListPaises;
-    private javax.swing.JPanel jPanel;
-    private javax.swing.JPanel jPanelAsistentes;
-    private javax.swing.JScrollPane jScrollPane;
     // End of variables declaration//GEN-END:variables
 
     public void llenarComboBox() {

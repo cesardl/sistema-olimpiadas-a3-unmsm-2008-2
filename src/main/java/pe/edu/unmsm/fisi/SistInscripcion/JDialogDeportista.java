@@ -9,29 +9,22 @@ import java.util.Observable;
 import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
-import javax.swing.UIManager;
 
-public class jDialogDeportista extends javax.swing.JDialog {
+public class JDialogDeportista extends javax.swing.JDialog {
 
     private Observable o;
     private DefaultComboBoxModel dcbmDeporte;
     private DefaultComboBoxModel dcbmPais;
-    private jDialogEquipos ventanaEquipo;
+    private JDialogEquipos ventanaEquipo;
     private Deportista d;
     private int posDeporte;
 
-    public jDialogDeportista(jDialogEquipos ventanaEquipo, String deporte,
+    public JDialogDeportista(JDialogEquipos ventanaEquipo, String deporte,
             String pais, Deportista deportista, int posDeporte) {
         this.ventanaEquipo = ventanaEquipo;
         this.posDeporte = posDeporte;
         o = new Observable();
         d = deportista;
-        if (System.getProperty("os.name").contains("Windows")) {
-            try {
-                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-            } catch (Exception ex) {
-            }
-        }
         initComponents();
         llenarComboBox();
         jComboBoxDeporte.setSelectedItem(deporte);
@@ -45,40 +38,40 @@ public class jDialogDeportista extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroupSexo = new javax.swing.ButtonGroup();
-        jPanelPrincipal = new javax.swing.JPanel();
-        jPanelDatosPersonales = new javax.swing.JPanel();
-        jLabelNombre = new javax.swing.JLabel();
-        jLabelApellido = new javax.swing.JLabel();
+        javax.swing.ButtonGroup buttonGroupSexo = new javax.swing.ButtonGroup();
+        javax.swing.JPanel jPanelPrincipal = new javax.swing.JPanel();
+        javax.swing.JPanel jPanelDatosPersonales = new javax.swing.JPanel();
+        javax.swing.JLabel jLabelNombre = new javax.swing.JLabel();
+        javax.swing.JLabel jLabelApellido = new javax.swing.JLabel();
         jTextFieldNombre = new javax.swing.JTextField();
         jTextFieldApellido = new javax.swing.JTextField();
-        jLabelSexo = new javax.swing.JLabel();
+        javax.swing.JLabel jLabelSexo = new javax.swing.JLabel();
         jRadioButtonMasculino = new javax.swing.JRadioButton();
-        jLabelTalla = new javax.swing.JLabel();
+        javax.swing.JLabel jLabelTalla = new javax.swing.JLabel();
         jTextFieldPeso = new javax.swing.JTextField();
         jTextFieldTalla = new javax.swing.JTextField();
-        jLabelPeso = new javax.swing.JLabel();
-        jLabelCm = new javax.swing.JLabel();
-        jLabelKg = new javax.swing.JLabel();
+        javax.swing.JLabel jLabelPeso = new javax.swing.JLabel();
+        javax.swing.JLabel jLabelCm = new javax.swing.JLabel();
+        javax.swing.JLabel jLabelKg = new javax.swing.JLabel();
         jRadioButtonFemenino = new javax.swing.JRadioButton();
-        jLabelFecha = new javax.swing.JLabel();
-        jLabelAño = new javax.swing.JLabel();
+        javax.swing.JLabel jLabelFecha = new javax.swing.JLabel();
+        javax.swing.JLabel jLabelAño = new javax.swing.JLabel();
         jComboBoxAño = new javax.swing.JComboBox();
-        jLabelMes = new javax.swing.JLabel();
+        javax.swing.JLabel jLabelMes = new javax.swing.JLabel();
         jComboBoxMes = new javax.swing.JComboBox();
-        jLabelDia = new javax.swing.JLabel();
+        javax.swing.JLabel jLabelDia = new javax.swing.JLabel();
         jComboBoxDia = new javax.swing.JComboBox();
-        jLabelPais = new javax.swing.JLabel();
-        jLabelDeporte = new javax.swing.JLabel();
+        javax.swing.JLabel jLabelPais = new javax.swing.JLabel();
+        javax.swing.JLabel jLabelDeporte = new javax.swing.JLabel();
         jComboBoxPais = new javax.swing.JComboBox();
         jComboBoxDeporte = new javax.swing.JComboBox();
-        jPanelCodigo = new javax.swing.JPanel();
-        jLabelCodigo = new javax.swing.JLabel();
+        javax.swing.JPanel jPanelCodigo = new javax.swing.JPanel();
+        javax.swing.JLabel jLabelCodigo = new javax.swing.JLabel();
         jTextFieldCodigo = new javax.swing.JTextField();
         jButtonGenerar = new javax.swing.JButton();
-        jSplitPane = new javax.swing.JSplitPane();
-        jButtonGuardar = new javax.swing.JButton();
-        jButtonCancelar = new javax.swing.JButton();
+        javax.swing.JSplitPane jSplitPane = new javax.swing.JSplitPane();
+        javax.swing.JButton jButtonGuardar = new javax.swing.JButton();
+        javax.swing.JButton jButtonCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Nuevo Deportista");
@@ -156,7 +149,7 @@ public class jDialogDeportista extends javax.swing.JDialog {
                                         .addGap(79, 79, 79)
                                         .addGroup(jPanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                             .addComponent(jTextFieldPeso, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jTextFieldTalla, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
+                                            .addComponent(jTextFieldTalla, javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jRadioButtonMasculino, javax.swing.GroupLayout.Alignment.LEADING)))
                                     .addComponent(jLabelPeso))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -164,8 +157,7 @@ public class jDialogDeportista extends javax.swing.JDialog {
                                     .addComponent(jLabelCm)
                                     .addComponent(jLabelKg))))
                         .addGap(18, 18, 18)
-                        .addComponent(jRadioButtonFemenino)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                        .addComponent(jRadioButtonFemenino))
                     .addComponent(jLabelFecha)
                     .addGroup(jPanelDatosPersonalesLayout.createSequentialGroup()
                         .addGroup(jPanelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -372,35 +364,14 @@ private void jButtonGenerarActionPerformed(java.awt.event.ActionEvent evt) {//GE
 }//GEN-LAST:event_jButtonGenerarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.ButtonGroup buttonGroupSexo;
-    private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonGenerar;
-    private javax.swing.JButton jButtonGuardar;
     private javax.swing.JComboBox jComboBoxAño;
     private javax.swing.JComboBox jComboBoxDeporte;
     private javax.swing.JComboBox jComboBoxDia;
     private javax.swing.JComboBox jComboBoxMes;
     private javax.swing.JComboBox jComboBoxPais;
-    private javax.swing.JLabel jLabelApellido;
-    private javax.swing.JLabel jLabelAño;
-    private javax.swing.JLabel jLabelCm;
-    private javax.swing.JLabel jLabelCodigo;
-    private javax.swing.JLabel jLabelDeporte;
-    private javax.swing.JLabel jLabelDia;
-    private javax.swing.JLabel jLabelFecha;
-    private javax.swing.JLabel jLabelKg;
-    private javax.swing.JLabel jLabelMes;
-    private javax.swing.JLabel jLabelNombre;
-    private javax.swing.JLabel jLabelPais;
-    private javax.swing.JLabel jLabelPeso;
-    private javax.swing.JLabel jLabelSexo;
-    private javax.swing.JLabel jLabelTalla;
-    private javax.swing.JPanel jPanelCodigo;
-    private javax.swing.JPanel jPanelDatosPersonales;
-    private javax.swing.JPanel jPanelPrincipal;
     private javax.swing.JRadioButton jRadioButtonFemenino;
     private javax.swing.JRadioButton jRadioButtonMasculino;
-    private javax.swing.JSplitPane jSplitPane;
     private javax.swing.JTextField jTextFieldApellido;
     private javax.swing.JTextField jTextFieldCodigo;
     private javax.swing.JTextField jTextFieldNombre;

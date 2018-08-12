@@ -9,11 +9,11 @@ import static org.junit.jupiter.api.Assertions.*;
  *
  * @author Cesardl
  */
-class ListaDeportesTest {
+class ListaPaisesTest {
 
     @Test
-    void loadListaDeportesTest() {
-        ListaDeportes listaDeportes = new ListaDeportes();
-        assertNotEquals(0, listaDeportes.tamanio());
+    void loadListaPaisesTest() {
+        ListaPaises listaPaises = new ListaPaises();
+        assertNotEquals(0, listaPaises.tamaño());
     }
 }

@@ -7,14 +7,14 @@ import javax.swing.JOptionPane;
 import java.util.Observable;
 import pe.edu.unmsm.fisi.SistEventos.JDialogPartidosPendientes;
 
-public class jDialogCompDos extends javax.swing.JDialog {
+public class JDialogCompDos extends javax.swing.JDialog {
 
     private Competencia c;
     private Observable o;
     private JDialogPartidosPendientes jdpp;
     private int nHome = 0, nAway = 0;
 
-    public jDialogCompDos(Competencia c, JDialogPartidosPendientes jdpp) {
+    public JDialogCompDos(Competencia c, JDialogPartidosPendientes jdpp) {
         initComponents();
         this.c = c;
         this.jdpp = jdpp;
@@ -42,18 +42,18 @@ public class jDialogCompDos extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel = new javax.swing.JPanel();
+        javax.swing.JPanel jPanel = new javax.swing.JPanel();
         jPanelParticipantes = new javax.swing.JPanel();
         jTextFieldHome = new javax.swing.JTextField();
-        jLabelVS = new javax.swing.JLabel();
+        javax.swing.JLabel jLabelVS = new javax.swing.JLabel();
         jTextFieldAway = new javax.swing.JTextField();
-        jButtonEmpezar = new javax.swing.JButton();
-        jPanelJuego = new javax.swing.JPanel();
-        jScrollPane = new javax.swing.JScrollPane();
+        javax.swing.JButton jButtonEmpezar = new javax.swing.JButton();
+        javax.swing.JPanel jPanelJuego = new javax.swing.JPanel();
+        javax.swing.JScrollPane jScrollPane = new javax.swing.JScrollPane();
         jTextAreaSalida = new javax.swing.JTextArea();
-        jSplitPane = new javax.swing.JSplitPane();
-        jButtonAceptar = new javax.swing.JButton();
-        jButtonCancelar = new javax.swing.JButton();
+        javax.swing.JSplitPane jSplitPane = new javax.swing.JSplitPane();
+        javax.swing.JButton jButtonAceptar = new javax.swing.JButton();
+        javax.swing.JButton jButtonCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -215,15 +215,7 @@ private void jButtonEmpezarActionPerformed(java.awt.event.ActionEvent evt) {//GE
 }//GEN-LAST:event_jButtonEmpezarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonAceptar;
-    private javax.swing.JButton jButtonCancelar;
-    private javax.swing.JButton jButtonEmpezar;
-    private javax.swing.JLabel jLabelVS;
-    private javax.swing.JPanel jPanel;
-    private javax.swing.JPanel jPanelJuego;
     private javax.swing.JPanel jPanelParticipantes;
-    private javax.swing.JScrollPane jScrollPane;
-    private javax.swing.JSplitPane jSplitPane;
     private javax.swing.JTextArea jTextAreaSalida;
     private javax.swing.JTextField jTextFieldAway;
     private javax.swing.JTextField jTextFieldHome;

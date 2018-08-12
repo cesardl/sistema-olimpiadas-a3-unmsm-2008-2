@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
- /*
+/*
  * NewJFrame.java
  *
  * Created on 01/12/2008, 12:04:54 AM
@@ -65,44 +65,44 @@ public class JDialogResultados extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        javax.swing.JPanel jPanel = new javax.swing.JPanel();
+        javax.swing.JScrollPane jScrollPane1 = new javax.swing.JScrollPane();
         jListOctavos1 = new javax.swing.JList();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        javax.swing.JScrollPane jScrollPane2 = new javax.swing.JScrollPane();
         jListOctavos2 = new javax.swing.JList();
-        jScrollPane3 = new javax.swing.JScrollPane();
+        javax.swing.JScrollPane jScrollPane3 = new javax.swing.JScrollPane();
         jListOctavos3 = new javax.swing.JList();
-        jScrollPane4 = new javax.swing.JScrollPane();
+        javax.swing.JScrollPane jScrollPane4 = new javax.swing.JScrollPane();
         jListOctavos4 = new javax.swing.JList();
-        jScrollPane5 = new javax.swing.JScrollPane();
+        javax.swing.JScrollPane jScrollPane5 = new javax.swing.JScrollPane();
         jListOctavos5 = new javax.swing.JList();
-        jScrollPane6 = new javax.swing.JScrollPane();
+        javax.swing.JScrollPane jScrollPane6 = new javax.swing.JScrollPane();
         jListOctavos6 = new javax.swing.JList();
-        jScrollPane7 = new javax.swing.JScrollPane();
+        javax.swing.JScrollPane jScrollPane7 = new javax.swing.JScrollPane();
         jListOctavos7 = new javax.swing.JList();
-        jScrollPane8 = new javax.swing.JScrollPane();
+        javax.swing.JScrollPane jScrollPane8 = new javax.swing.JScrollPane();
         jListOctavos8 = new javax.swing.JList();
-        jScrollPane9 = new javax.swing.JScrollPane();
+        javax.swing.JScrollPane jScrollPane9 = new javax.swing.JScrollPane();
         jListCuartos1 = new javax.swing.JList();
-        jScrollPane10 = new javax.swing.JScrollPane();
+        javax.swing.JScrollPane jScrollPane10 = new javax.swing.JScrollPane();
         jListCuartos2 = new javax.swing.JList();
-        jScrollPane11 = new javax.swing.JScrollPane();
+        javax.swing.JScrollPane jScrollPane11 = new javax.swing.JScrollPane();
         jListCuartos3 = new javax.swing.JList();
-        jScrollPane12 = new javax.swing.JScrollPane();
+        javax.swing.JScrollPane jScrollPane12 = new javax.swing.JScrollPane();
         jListCuartos4 = new javax.swing.JList();
-        jScrollPane13 = new javax.swing.JScrollPane();
+        javax.swing.JScrollPane jScrollPane13 = new javax.swing.JScrollPane();
         jListSemifinal1 = new javax.swing.JList();
-        jScrollPane14 = new javax.swing.JScrollPane();
+        javax.swing.JScrollPane jScrollPane14 = new javax.swing.JScrollPane();
         jListSemifinal2 = new javax.swing.JList();
-        jScrollPane15 = new javax.swing.JScrollPane();
+        javax.swing.JScrollPane jScrollPane15 = new javax.swing.JScrollPane();
         jListFinal = new javax.swing.JList();
-        jScrollPane16 = new javax.swing.JScrollPane();
+        javax.swing.JScrollPane jScrollPane16 = new javax.swing.JScrollPane();
         jList3erPuesto = new javax.swing.JList();
-        jTextFieldCampeon = new javax.swing.JTextField();
-        jPanel2 = new javax.swing.JPanel();
+        javax.swing.JTextField jTextFieldCampeon = new javax.swing.JTextField();
+        javax.swing.JPanel jPanel2 = new javax.swing.JPanel();
         jScrollPane18 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jPanel3 = new javax.swing.JPanel();
+        javax.swing.JTextArea jTextArea1 = new javax.swing.JTextArea();
+        javax.swing.JPanel jPanel3 = new javax.swing.JPanel();
         jScrollPane17 = new javax.swing.JScrollPane();
         jList17 = new javax.swing.JList();
         jButtonVerPartidosPendientes = new javax.swing.JButton();
@@ -110,7 +110,7 @@ public class JDialogResultados extends javax.swing.JDialog {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        javax.swing.JPanel jPanel1 = new javax.swing.JPanel();
         jLabelDeporte = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -412,29 +412,7 @@ public class JDialogResultados extends javax.swing.JDialog {
     private javax.swing.JList jListOctavos8;
     private javax.swing.JList jListSemifinal1;
     private javax.swing.JList jListSemifinal2;
-    private javax.swing.JPanel jPanel;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane10;
-    private javax.swing.JScrollPane jScrollPane11;
-    private javax.swing.JScrollPane jScrollPane12;
-    private javax.swing.JScrollPane jScrollPane13;
-    private javax.swing.JScrollPane jScrollPane14;
-    private javax.swing.JScrollPane jScrollPane15;
-    private javax.swing.JScrollPane jScrollPane16;
     private javax.swing.JScrollPane jScrollPane17;
     private javax.swing.JScrollPane jScrollPane18;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JScrollPane jScrollPane7;
-    private javax.swing.JScrollPane jScrollPane8;
-    private javax.swing.JScrollPane jScrollPane9;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextFieldCampeon;
     // End of variables declaration//GEN-END:variables
 }

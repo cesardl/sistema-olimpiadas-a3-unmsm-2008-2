@@ -2,22 +2,20 @@ package pe.edu.unmsm.fisi.Principal;
 
 import java.awt.Dialog.ModalityType;
 import javax.swing.JOptionPane;
-import javax.swing.UIManager;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import pe.edu.unmsm.fisi.splash.JDialogSplash;
 
-public class jFrameBienvenida extends javax.swing.JFrame {
+public class JFrameBienvenida extends javax.swing.JFrame {
+
+    private static final Logger LOG = LoggerFactory.getLogger(JFrameBienvenida.class);
 
     private JDialogSplash GUICargar;
     private String id;
     private transient String pass;
 
-    public jFrameBienvenida() {
-        if (System.getProperty("os.name").contains("Windows")) {
-            try {
-                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-            } catch (Exception ex) {
-            }
-        }
+    public JFrameBienvenida() {
         initComponents();
 
         id = "fisi";
@@ -30,14 +28,14 @@ public class jFrameBienvenida extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel = new javax.swing.JPanel();
-        jLabelUser = new javax.swing.JLabel();
-        jLabelPsw = new javax.swing.JLabel();
-        jLabelImagen = new javax.swing.JLabel();
+        javax.swing.JPanel jPanel = new javax.swing.JPanel();
+        javax.swing.JLabel jLabelUser = new javax.swing.JLabel();
+        javax.swing.JLabel jLabelPsw = new javax.swing.JLabel();
+        javax.swing.JLabel jLabelImagen = new javax.swing.JLabel();
         jTextFieldUser = new javax.swing.JTextField();
         jPasswordFieldPswd = new javax.swing.JPasswordField();
-        jButtonAceptar = new javax.swing.JButton();
-        jButtonCancelar = new javax.swing.JButton();
+        javax.swing.JButton jButtonAceptar = new javax.swing.JButton();
+        javax.swing.JButton jButtonCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema de Juegos Olimpicos");
@@ -154,12 +152,6 @@ private void jTextFieldUserActionPerformed(java.awt.event.ActionEvent evt) {//GE
 }//GEN-LAST:event_jTextFieldUserActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonAceptar;
-    private javax.swing.JButton jButtonCancelar;
-    private javax.swing.JLabel jLabelImagen;
-    private javax.swing.JLabel jLabelPsw;
-    private javax.swing.JLabel jLabelUser;
-    private javax.swing.JPanel jPanel;
     private javax.swing.JPasswordField jPasswordFieldPswd;
     private javax.swing.JTextField jTextFieldUser;
     // End of variables declaration//GEN-END:variables
@@ -174,8 +166,10 @@ private void jTextFieldUserActionPerformed(java.awt.event.ActionEvent evt) {//GE
         } catch (Exception e) {
         }
         if (cuenta.equals(id) && contrasenia.equals(pass)) {
+            LOG.info("Logging successful");
             return true;
         } else {
+            LOG.info("Logging failed");
             return false;
         }
     }
@@ -187,7 +181,8 @@ private void jTextFieldUserActionPerformed(java.awt.event.ActionEvent evt) {//GE
             if (SecuenciaValidacion()) {
                 JOptionPane.showMessageDialog(this, "Bienvenido!!!",
                         this.getTitle(), JOptionPane.INFORMATION_MESSAGE);
-                jFramePrincipal vPrincipal = new jFramePrincipal();
+                LOG.debug("Opening JFramePrincipal");
+                JFramePrincipal vPrincipal = new JFramePrincipal();
                 vPrincipal.setLocationRelativeTo(this);
                 vPrincipal.setVisible(true);
                 this.dispose();

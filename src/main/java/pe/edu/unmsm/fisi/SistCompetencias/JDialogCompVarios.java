@@ -3,9 +3,9 @@ package pe.edu.unmsm.fisi.SistCompetencias;
 import javax.swing.JOptionPane;
 import pe.edu.unmsm.fisi.clases.Metodos;
 
-public class jDialogCompVarios extends javax.swing.JDialog {
+public class JDialogCompVarios extends javax.swing.JDialog {
 
-    public jDialogCompVarios(java.awt.Frame parent, ModalityType modal) {
+    public JDialogCompVarios(java.awt.Frame parent, ModalityType modal) {
         super(parent, modal);
         initComponents();
     }
@@ -18,17 +18,17 @@ public class jDialogCompVarios extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel = new javax.swing.JPanel();
+        javax.swing.JPanel jPanel = new javax.swing.JPanel();
         jPanelParticipantes = new javax.swing.JPanel();
-        jScrollPaneJParticipantes = new javax.swing.JScrollPane();
-        jListParticipantes = new javax.swing.JList();
-        jButtonEmpezar = new javax.swing.JButton();
-        jPanelJuego = new javax.swing.JPanel();
-        jScrollPane = new javax.swing.JScrollPane();
-        jTextAreaSalida = new javax.swing.JTextArea();
-        jSplitPane = new javax.swing.JSplitPane();
-        jButtonAceptar = new javax.swing.JButton();
-        jButtonCancelar = new javax.swing.JButton();
+        javax.swing.JScrollPane jScrollPaneJParticipantes = new javax.swing.JScrollPane();
+        javax.swing.JList jListParticipantes = new javax.swing.JList();
+        javax.swing.JButton jButtonEmpezar = new javax.swing.JButton();
+        javax.swing.JPanel jPanelJuego = new javax.swing.JPanel();
+        javax.swing.JScrollPane jScrollPane = new javax.swing.JScrollPane();
+        javax.swing.JTextArea jTextAreaSalida = new javax.swing.JTextArea();
+        javax.swing.JSplitPane jSplitPane = new javax.swing.JSplitPane();
+        javax.swing.JButton jButtonAceptar = new javax.swing.JButton();
+        javax.swing.JButton jButtonCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -72,8 +72,8 @@ public class jDialogCompVarios extends javax.swing.JDialog {
 
         jPanelJuego.setBorder(javax.swing.BorderFactory.createTitledBorder("Juego"));
 
-        jTextAreaSalida.setColumns(20);
         jTextAreaSalida.setEditable(false);
+        jTextAreaSalida.setColumns(20);
         jTextAreaSalida.setRows(5);
         jScrollPane.setViewportView(jTextAreaSalida);
 
@@ -167,16 +167,6 @@ private void jButtonEmpezarActionPerformed(java.awt.event.ActionEvent evt) {//GE
 }//GEN-LAST:event_jButtonEmpezarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonAceptar;
-    private javax.swing.JButton jButtonCancelar;
-    private javax.swing.JButton jButtonEmpezar;
-    private javax.swing.JList jListParticipantes;
-    private javax.swing.JPanel jPanel;
-    private javax.swing.JPanel jPanelJuego;
     private javax.swing.JPanel jPanelParticipantes;
-    private javax.swing.JScrollPane jScrollPane;
-    private javax.swing.JScrollPane jScrollPaneJParticipantes;
-    private javax.swing.JSplitPane jSplitPane;
-    private javax.swing.JTextArea jTextAreaSalida;
     // End of variables declaration//GEN-END:variables
 }

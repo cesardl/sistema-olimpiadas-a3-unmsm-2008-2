@@ -5,19 +5,19 @@ import pe.edu.unmsm.fisi.clases.ListaDeportes;
 import java.util.Observable;
 import javax.swing.table.DefaultTableModel;
 
-public class jDialogMarcarAsistencia extends javax.swing.JDialog {
+public class JDialogMarcarAsistencia extends javax.swing.JDialog {
 
     private DefaultTableModel dtmParticipantes;
-    private jDialogControlAsistencia jdca;
+    private JDialogControlAsistencia jdca;
     private ListaDeportes listaDeportes;
     private Observable observable;
     private int posicion;
 
-    public jDialogMarcarAsistencia(java.awt.Frame parent, ModalityType modal, ListaDeportes ld, int posicion) {
+    public JDialogMarcarAsistencia(java.awt.Frame parent, ModalityType modal, ListaDeportes ld, int posicion) {
         super(parent, modal);
         initComponents();
 
-        jdca = new jDialogControlAsistencia(parent, modal, ld);
+        jdca = new JDialogControlAsistencia(parent, modal, ld);
         observable = new Observable();
         listaDeportes = ld;
         dtmParticipantes = (DefaultTableModel) jTableParticipantes.getModel();
@@ -30,12 +30,12 @@ public class jDialogMarcarAsistencia extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel = new javax.swing.JPanel();
-        jPanelParticipantes = new javax.swing.JPanel();
-        jScrollPane = new javax.swing.JScrollPane();
+        javax.swing.JPanel jPanel = new javax.swing.JPanel();
+        javax.swing.JPanel jPanelParticipantes = new javax.swing.JPanel();
+        javax.swing.JScrollPane jScrollPane = new javax.swing.JScrollPane();
         jTableParticipantes = new javax.swing.JTable();
-        jButtonAceptar = new javax.swing.JButton();
-        jButtonCancelar = new javax.swing.JButton();
+        javax.swing.JButton jButtonAceptar = new javax.swing.JButton();
+        javax.swing.JButton jButtonCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -154,11 +154,6 @@ private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//G
 }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonAceptar;
-    private javax.swing.JButton jButtonCancelar;
-    private javax.swing.JPanel jPanel;
-    private javax.swing.JPanel jPanelParticipantes;
-    private javax.swing.JScrollPane jScrollPane;
     private javax.swing.JTable jTableParticipantes;
     // End of variables declaration//GEN-END:variables
 
