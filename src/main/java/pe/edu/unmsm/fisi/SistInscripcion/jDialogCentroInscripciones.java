@@ -22,7 +22,6 @@ public class jDialogCentroInscripciones extends javax.swing.JDialog implements O
     private DefaultComboBoxModel dcbmPais;
     private ListaDeportes listaDeportes;
 
-
     public jDialogCentroInscripciones(ListaDeportes bd) {
         if (System.getProperty("os.name").contains("Windows")) {
             try {

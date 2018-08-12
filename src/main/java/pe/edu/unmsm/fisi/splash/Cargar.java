@@ -1,13 +1,14 @@
-package pe.edu.unmsm.fisi.Splash;
+package pe.edu.unmsm.fisi.splash;
 
-import java.awt.Window;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.DefaultBoundedRangeModel;
-import javax.swing.JDialog;
-import javax.swing.JProgressBar;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import javax.swing.*;
+import java.awt.*;
 
 public class Cargar extends Thread {
+
+    private static final Logger LOG = LoggerFactory.getLogger(Cargar.class);
 
     private DefaultBoundedRangeModel modelo;
     private JDialog ventana;
@@ -26,7 +27,7 @@ public class Cargar extends Thread {
                 modelo.setValue(i);
             }
         } catch (InterruptedException ex) {
-            Logger.getLogger(Cargar.class.getName()).log(Level.SEVERE, null, ex);
+            LOG.error(ex.getMessage(), ex);
         }
         ventana.dispose();
     }

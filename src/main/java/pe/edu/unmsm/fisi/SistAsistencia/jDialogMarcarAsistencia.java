@@ -143,11 +143,11 @@ public class jDialogMarcarAsistencia extends javax.swing.JDialog {
 
 private void jButtonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarActionPerformed
     capturarDatosTabla();//GEN-LAST:event_jButtonAceptarActionPerformed
-    observable.addObserver(jdca);
-    observable.notifyObservers(listaDeportes);
-    jdca.update(observable, listaDeportes);
-    this.dispose();
-}                                              
+        observable.addObserver(jdca);
+        observable.notifyObservers(listaDeportes);
+        jdca.update(observable, listaDeportes);
+        this.dispose();
+    }
 
 private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
     this.dispose();

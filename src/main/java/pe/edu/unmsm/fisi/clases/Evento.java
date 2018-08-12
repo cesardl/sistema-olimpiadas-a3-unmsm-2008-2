@@ -10,7 +10,6 @@ public class Evento {
     private ArrayList<Equipo> paisesParticipantes;
     private ArrayList<Competencia> listaCompetencias;
 
-
     public Evento(String nombreDeporte, ArrayList<Equipo> paisesParticipantes, int equiposPorCompetencia) {
         this.nombreDeporte = nombreDeporte;
         this.paisesParticipantes = paisesParticipantes;
@@ -36,8 +35,9 @@ public class Evento {
 
     public void CalcularPartidosProgramados() {
         Competencia c;
-        if (paisesParticipantes != null)
+        if (paisesParticipantes != null) {
             Collections.shuffle(paisesParticipantes);
+        }
         for (int i = 0; i < paisesParticipantes.size(); i = i + 2) {
             c = new Competencia(paisesParticipantes.get(i), paisesParticipantes.get(i + 1));
             listaCompetencias.add(c);
@@ -47,6 +47,5 @@ public class Evento {
     public String getNombreDeporte() {
         return nombreDeporte;
     }
-
 
 }

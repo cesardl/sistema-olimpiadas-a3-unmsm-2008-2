@@ -1,24 +1,27 @@
-package pe.edu.unmsm.fisi.Splash;
+package pe.edu.unmsm.fisi.splash;
 
-import javax.swing.JDialog;
-import javax.swing.UIManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-public class jDialogSplash extends JDialog {
+import javax.swing.*;
 
-    private Cargar h;
+public class JDialogSplash extends JDialog {
 
-    public jDialogSplash(java.awt.Frame parent, ModalityType modal) {
+    private static final Logger LOG = LoggerFactory.getLogger(JDialogSplash.class);
+
+    public JDialogSplash(java.awt.Frame parent, ModalityType modal) {
         super(parent, modal);
         if (System.getProperty("os.name").contains("Windows")) {
             try {
                 UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-            } catch (Exception ex) {
+            } catch (ClassNotFoundException | IllegalAccessException | InstantiationException | UnsupportedLookAndFeelException ex) {
+                LOG.error(ex.getMessage(), ex);
             }
         }
 
         initComponents();
 
-        h = new Cargar(jProgressBarProgreso, this);
+        Cargar h = new Cargar(jProgressBarProgreso, this);
         h.start();
     }
 
@@ -26,11 +29,11 @@ public class jDialogSplash extends JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanelPrincipal = new javax.swing.JPanel();
-        jPanelProgreso = new javax.swing.JPanel();
+        javax.swing.JPanel jPanelPrincipal = new javax.swing.JPanel();
+        javax.swing.JPanel jPanelProgreso = new javax.swing.JPanel();
         jProgressBarProgreso = new javax.swing.JProgressBar();
-        jLabelProgreso = new javax.swing.JLabel();
-        jLabelImagen = new javax.swing.JLabel();
+        javax.swing.JLabel jLabelProgreso = new javax.swing.JLabel();
+        javax.swing.JLabel jLabelImagen = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Sistema de Juegos Olimpicos");
@@ -103,10 +106,6 @@ public class jDialogSplash extends JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabelImagen;
-    private javax.swing.JLabel jLabelProgreso;
-    private javax.swing.JPanel jPanelPrincipal;
-    private javax.swing.JPanel jPanelProgreso;
     private javax.swing.JProgressBar jProgressBarProgreso;
     // End of variables declaration//GEN-END:variables
 }

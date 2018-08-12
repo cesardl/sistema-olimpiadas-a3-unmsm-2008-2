@@ -12,7 +12,7 @@ public class jDialogCompDos extends javax.swing.JDialog {
     private Competencia c;
     private Observable o;
     private JDialogPartidosPendientes jdpp;
-    private int nHome = 0,  nAway = 0;
+    private int nHome = 0, nAway = 0;
 
     public jDialogCompDos(Competencia c, JDialogPartidosPendientes jdpp) {
         initComponents();
@@ -31,9 +31,9 @@ public class jDialogCompDos extends javax.swing.JDialog {
         while (nHome == nAway) {
             nHome = Metodos.random(5);
             nAway = Metodos.random(5);
-            salida = "\tResultado\n\n" +
-                    home + " : " + nHome + "\n" +
-                    away + " : " + nAway;
+            salida = "\tResultado\n\n"
+                    + home + " : " + nHome + "\n"
+                    + away + " : " + nAway;
         }
         jTextAreaSalida.setText(salida);
     }

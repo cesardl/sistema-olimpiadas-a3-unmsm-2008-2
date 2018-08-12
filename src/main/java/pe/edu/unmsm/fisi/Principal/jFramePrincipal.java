@@ -17,8 +17,7 @@ import java.util.Observer;
 import javax.swing.*;
 
 /**
- * Esto la clase que invoca a los otro sistemas.
- * Esta es una ventana observaor.
+ * Esto la clase que invoca a los otro sistemas. Esta es una ventana observaor.
  */
 public class jFramePrincipal extends javax.swing.JFrame implements Observer {
 
@@ -327,8 +326,8 @@ private void jMenuItemIniciarJuegosOlimpicosActionPerformed(java.awt.event.Actio
     // End of variables declaration//GEN-END:variables
 
     /**
-     * Actualiza la informacion recibida de los otros sistemas,
-     * para la lista de deportes
+     * Actualiza la informacion recibida de los otros sistemas, para la lista de
+     * deportes
      */
     public void update(Observable o, Object arg) {
         listaDeportes = (ListaDeportes) arg;

@@ -26,8 +26,8 @@ public class jDialogEquipos extends javax.swing.JDialog implements Observer {
     private ListaDeportes listaDeportes;
     private ListaPaises listaPaises;
     private Deporte deporteTemporal;
-    private int inscritosIni,  inscritos,  limite,  edicion;
-    private boolean guardado,  modificado;
+    private int inscritosIni, inscritos, limite, edicion;
+    private boolean guardado, modificado;
 
     public jDialogEquipos(jDialogCentroInscripciones vci, String deporte, String pais, ListaDeportes listaDeportes) {
         o = new Observable();
@@ -432,10 +432,10 @@ private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//G
         boolean agregado = deporteTemporal.agregarEquipo(equipoTemporal);
         if (agregado == false) {
             int opcion = JOptionPane.showConfirmDialog(this,
-                    "La lista de participantes de " + equipoTemporal.getDeporte() + " está completa\n " +
-                    "si quiere inscribir a un equipo de esta delegación, tendrá\n" +
-                    "que verificar que queden cupos en el deporte seleccionado.\n" +
-                    "Desea ver la lista de paises inscritos por deporte",
+                    "La lista de participantes de " + equipoTemporal.getDeporte() + " está completa\n "
+                    + "si quiere inscribir a un equipo de esta delegación, tendrá\n"
+                    + "que verificar que queden cupos en el deporte seleccionado.\n"
+                    + "Desea ver la lista de paises inscritos por deporte",
                     "Error",
                     JOptionPane.YES_NO_CANCEL_OPTION);
             if (opcion == JOptionPane.YES_OPTION) {

@@ -316,8 +316,8 @@ public class jDialogDeportista extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
 private void jButtonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarActionPerformed
-    if (deStringInteger(jTextFieldTalla.getText()) == -1 ||
-            deStringInteger(jTextFieldPeso.getText()) == -1) {
+    if (deStringInteger(jTextFieldTalla.getText()) == -1
+            || deStringInteger(jTextFieldPeso.getText()) == -1) {
         JOptionPane.showMessageDialog(this, "ingrese correctamente los datos",
                 "Error", JOptionPane.ERROR_MESSAGE);
     } else {

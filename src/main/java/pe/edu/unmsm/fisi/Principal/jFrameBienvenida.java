@@ -3,11 +3,11 @@ package pe.edu.unmsm.fisi.Principal;
 import java.awt.Dialog.ModalityType;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
-import pe.edu.unmsm.fisi.Splash.jDialogSplash;
+import pe.edu.unmsm.fisi.splash.JDialogSplash;
 
 public class jFrameBienvenida extends javax.swing.JFrame {
 
-    private jDialogSplash GUICargar;
+    private JDialogSplash GUICargar;
     private String id;
     private transient String pass;
 
@@ -168,7 +168,7 @@ private void jTextFieldUserActionPerformed(java.awt.event.ActionEvent evt) {//GE
         String cuenta = jTextFieldUser.getText().trim();
         String contrasenia = new String(jPasswordFieldPswd.getPassword());
         try {
-            GUICargar = new jDialogSplash(null, ModalityType.APPLICATION_MODAL);
+            GUICargar = new JDialogSplash(null, ModalityType.APPLICATION_MODAL);
             GUICargar.setLocationRelativeTo(this);
             GUICargar.setVisible(true);
         } catch (Exception e) {
