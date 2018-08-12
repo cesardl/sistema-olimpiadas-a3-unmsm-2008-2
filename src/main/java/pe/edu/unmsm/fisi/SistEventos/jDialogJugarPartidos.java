@@ -1,6 +1,6 @@
 package pe.edu.unmsm.fisi.SistEventos;
 
-import pe.edu.unmsm.fisi.Clases.Competencia;
+import pe.edu.unmsm.fisi.clases.Competencia;
 import java.util.ArrayList;
 
 public class jDialogJugarPartidos extends javax.swing.JDialog {

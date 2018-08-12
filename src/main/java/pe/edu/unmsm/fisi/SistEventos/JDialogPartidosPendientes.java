@@ -1,8 +1,8 @@
 package pe.edu.unmsm.fisi.SistEventos;
 
-import pe.edu.unmsm.fisi.Clases.Competencia;
-import pe.edu.unmsm.fisi.Clases.Equipo;
-import pe.edu.unmsm.fisi.Clases.Evento;
+import pe.edu.unmsm.fisi.clases.Competencia;
+import pe.edu.unmsm.fisi.clases.Equipo;
+import pe.edu.unmsm.fisi.clases.Evento;
 import pe.edu.unmsm.fisi.SistCompetencias.jDialogCompDos;
 import java.util.ArrayList;
 import java.util.Observable;

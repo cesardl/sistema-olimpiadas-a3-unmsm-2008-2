@@ -1,4 +1,4 @@
-package pe.edu.unmsm.fisi.Clases;
+package pe.edu.unmsm.fisi.clases;
 
 import javax.swing.*;
 import java.awt.*;

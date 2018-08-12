@@ -1,9 +1,9 @@
 package pe.edu.unmsm.fisi.SistEventos;
 
-import pe.edu.unmsm.fisi.Clases.Deporte;
-import pe.edu.unmsm.fisi.Clases.Evento;
-import pe.edu.unmsm.fisi.Clases.ListaDeportes;
-import pe.edu.unmsm.fisi.Clases.ListaEventos;
+import pe.edu.unmsm.fisi.clases.Deporte;
+import pe.edu.unmsm.fisi.clases.Evento;
+import pe.edu.unmsm.fisi.clases.ListaDeportes;
+import pe.edu.unmsm.fisi.clases.ListaEventos;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;

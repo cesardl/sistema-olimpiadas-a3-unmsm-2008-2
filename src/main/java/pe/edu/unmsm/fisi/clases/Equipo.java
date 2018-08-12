@@ -1,10 +1,11 @@
-package pe.edu.unmsm.fisi.Clases;
+package pe.edu.unmsm.fisi.clases;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Equipo implements Serializable {
 
+    private static final long serialVersionUID = -7719026374136553477L;
     private ArrayList<Deportista> equipo;
     private String pais;
     private String deporte;
@@ -12,7 +13,7 @@ public class Equipo implements Serializable {
     private boolean asistio;
 
     public Equipo(String pais, String deporte) {
-        this.equipo = new ArrayList<Deportista>();
+        this.equipo = new ArrayList<>();
         this.pais = pais;
         this.deporte = deporte;
         calcularLimiteDeportistas(deporte);

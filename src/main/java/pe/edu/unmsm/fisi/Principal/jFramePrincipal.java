@@ -1,7 +1,9 @@
 package pe.edu.unmsm.fisi.Principal;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import pe.edu.unmsm.fisi.SistInscripcion.jDialogCentroInscripciones;
-import pe.edu.unmsm.fisi.Clases.ListaDeportes;
+import pe.edu.unmsm.fisi.clases.ListaDeportes;
 import pe.edu.unmsm.fisi.SistAsistencia.jDialogControlAsistencia;
 import pe.edu.unmsm.fisi.SistEventos.JDialogVerAsistencia;
 import java.awt.Dialog.ModalityType;
@@ -12,14 +14,15 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.Observable;
 import java.util.Observer;
-import javax.swing.JOptionPane;
-import javax.swing.UIManager;
+import javax.swing.*;
 
 /**
  * Esto la clase que invoca a los otro sistemas.
  * Esta es una ventana observaor.
  */
 public class jFramePrincipal extends javax.swing.JFrame implements Observer {
+
+    private static final Logger LOG = LoggerFactory.getLogger(jFramePrincipal.class);
 
     private ListaDeportes listaDeportes;
     private final ModalityType modal = ModalityType.APPLICATION_MODAL;
@@ -31,7 +34,8 @@ public class jFramePrincipal extends javax.swing.JFrame implements Observer {
         if (System.getProperty("os.name").contains("Windows")) {
             try {
                 UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-            } catch (Exception ex) {
+            } catch (ClassNotFoundException | IllegalAccessException | UnsupportedLookAndFeelException | InstantiationException ex) {
+                LOG.error(ex.getMessage(), ex);
             }
         }
         listaDeportes = new ListaDeportes();

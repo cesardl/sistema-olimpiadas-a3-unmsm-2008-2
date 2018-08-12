@@ -1,7 +1,7 @@
 package pe.edu.unmsm.fisi.SistInscripcion;
 
-import pe.edu.unmsm.fisi.Clases.Deportista;
-import pe.edu.unmsm.fisi.Clases.Fecha;
+import pe.edu.unmsm.fisi.clases.Deportista;
+import pe.edu.unmsm.fisi.clases.Fecha;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;

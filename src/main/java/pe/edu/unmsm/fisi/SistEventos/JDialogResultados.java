@@ -10,9 +10,9 @@
  */
 package pe.edu.unmsm.fisi.SistEventos;
 
-import pe.edu.unmsm.fisi.Clases.Evento;
-import pe.edu.unmsm.fisi.Clases.ListaDeportes;
-import pe.edu.unmsm.fisi.Clases.ListaEventos;
+import pe.edu.unmsm.fisi.clases.Evento;
+import pe.edu.unmsm.fisi.clases.ListaDeportes;
+import pe.edu.unmsm.fisi.clases.ListaEventos;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 

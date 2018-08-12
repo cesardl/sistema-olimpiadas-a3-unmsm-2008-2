@@ -23,7 +23,7 @@ public class jFrameBienvenida extends javax.swing.JFrame {
         id = "fisi";
         pass = "algoritmica";
 
-        pe.edu.unmsm.fisi.Clases.Metodos.centrarVentana(this);
+        pe.edu.unmsm.fisi.clases.Metodos.centrarVentana(this);
     }
 
     @SuppressWarnings("unchecked")

@@ -1,6 +1,6 @@
 package pe.edu.unmsm.fisi.SistAsistencia;
 
-import pe.edu.unmsm.fisi.Clases.ListaDeportes;
+import pe.edu.unmsm.fisi.clases.ListaDeportes;
 import pe.edu.unmsm.fisi.Principal.jFramePrincipal;
 import java.util.Observable;
 import java.util.Observer;

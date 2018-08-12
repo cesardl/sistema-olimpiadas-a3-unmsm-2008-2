@@ -1,7 +1,7 @@
 package pe.edu.unmsm.fisi.SistInscripcion;
 
-import pe.edu.unmsm.fisi.Clases.Deporte;
-import pe.edu.unmsm.fisi.Clases.ListaDeportes;
+import pe.edu.unmsm.fisi.clases.Deporte;
+import pe.edu.unmsm.fisi.clases.ListaDeportes;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
 import javax.swing.DefaultComboBoxModel;

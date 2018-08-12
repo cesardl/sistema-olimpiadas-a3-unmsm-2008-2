@@ -1,8 +1,8 @@
 package pe.edu.unmsm.fisi.SistCompetencias;
 
-import pe.edu.unmsm.fisi.Clases.Competencia;
-import pe.edu.unmsm.fisi.Clases.Equipo;
-import pe.edu.unmsm.fisi.Clases.Metodos;
+import pe.edu.unmsm.fisi.clases.Competencia;
+import pe.edu.unmsm.fisi.clases.Equipo;
+import pe.edu.unmsm.fisi.clases.Metodos;
 import javax.swing.JOptionPane;
 import java.util.Observable;
 import pe.edu.unmsm.fisi.SistEventos.JDialogPartidosPendientes;

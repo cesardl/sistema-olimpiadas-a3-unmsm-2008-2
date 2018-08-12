@@ -1,21 +1,25 @@
-package pe.edu.unmsm.fisi.Clases;
+package pe.edu.unmsm.fisi.clases;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.ObjectInputStream;
-import java.io.Serializable;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Vector;
 
 public class ListaDeportes implements Serializable {
 
+    private static final long serialVersionUID = -3648330891224887362L;
+
+    private static final Logger LOG = LoggerFactory.getLogger(ListaDeportes.class);
+
     private ArrayList<Deporte> listaDeportes;
 
     public ListaDeportes() {
-        listaDeportes = new ArrayList<Deporte>();
+        listaDeportes = new ArrayList<>();
         String dir = System.getProperty("user.dir");
-        File fDeporte = new File(dir + "//src//Extras//deportes.obj");
-        File fTamañoEquipo = new File(dir + "//src//Extras//tamañoEquipo.obj");
+        File fDeporte = new File(dir + "//src//main//resources//Extras//deportes.obj");
+        File fTamañoEquipo = new File(dir + "//src//main//resources//Extras//tamañoEquipo.obj");
         try {
             FileInputStream fisDeporte = new FileInputStream(fDeporte);
             FileInputStream fisTamañoEquipo = new FileInputStream(fTamañoEquipo);
@@ -26,11 +30,11 @@ public class ListaDeportes implements Serializable {
             oisDeporte.close();
             oisTamañoEquipo.close();
             for (int i = 0; i < vDeporte.size(); i++) {
-                int tamañoEquipo = Integer.parseInt(vTamañoEquipo.get(i).toString().trim());
-                listaDeportes.add(new Deporte((String) vDeporte.get(i), 16, tamañoEquipo));
+                int teamSize = Integer.parseInt(vTamañoEquipo.get(i).toString().trim());
+                listaDeportes.add(new Deporte((String) vDeporte.get(i), 16, teamSize));
             }
-        } catch (Exception ex) {
-            ex.printStackTrace();
+        } catch (IOException | ClassNotFoundException | NumberFormatException ex) {
+            LOG.error(ex.getMessage(), ex);
         }
     }
 
@@ -44,9 +48,9 @@ public class ListaDeportes implements Serializable {
 
     public Deporte getDeporte(String nombreDeporte) {
         Deporte d = null;
-        for (int i = 0; i < listaDeportes.size(); i++) {
-            if (listaDeportes.get(i).getNombre().equals(nombreDeporte)) {
-                d = listaDeportes.get(i);
+        for (Deporte listaDeporte : listaDeportes) {
+            if (listaDeporte.getNombre().equals(nombreDeporte)) {
+                d = listaDeporte;
             }
         }
         return d;

@@ -1,4 +1,4 @@
-package pe.edu.unmsm.fisi.Clases;
+package pe.edu.unmsm.fisi.clases;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -18,7 +18,7 @@ public class Competencia {
      * Constructor cuando juegen dos
      */
     public Competencia(Equipo e1, Equipo e2) {
-        competidores = new ArrayList<Equipo>();
+        competidores = new ArrayList<>();
         competidores.add(e1);
         competidores.add(e2);
     }
