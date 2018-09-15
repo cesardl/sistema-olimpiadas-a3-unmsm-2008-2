@@ -5,15 +5,17 @@ import java.util.ArrayList;
 
 public class Deporte implements Serializable {
 
-    int limiteDeportistas;
+    private static final long serialVersionUID = -5356081773263584263L;
+
     private String nombre;
     private int numeroCupos;
     private ArrayList<Equipo> listaEquipos;
+    private int limiteDeportistas;
 
     public Deporte(String nombre, int numeroCupos, int limiteDeportistas) {
         this.nombre = nombre;
         this.numeroCupos = numeroCupos;
-        listaEquipos = new ArrayList<Equipo>();
+        listaEquipos = new ArrayList<>();
         this.limiteDeportistas = limiteDeportistas;
     }
 
@@ -33,7 +35,7 @@ public class Deporte implements Serializable {
         this.numeroCupos = numeroCupos;
     }
 
-    public int tamanio() {
+    public int teamsSize() {
         return listaEquipos.size();
     }
 
@@ -60,16 +62,23 @@ public class Deporte implements Serializable {
 
     public Equipo getEquipo(String nombrePais) {
         Equipo e = null;
-        for (int i = 0; i < listaEquipos.size(); i++) {
-            if (listaEquipos.get(i).getPais().equals(nombrePais)) {
-                e = listaEquipos.get(i);
+        for (Equipo listaEquipo : listaEquipos) {
+            if (listaEquipo.getPais().equals(nombrePais)) {
+                e = listaEquipo;
             }
         }
         return e;
     }
 
     public Equipo getEquipo(int index) {
-        Equipo e = listaEquipos.get(index);
-        return e;
+        return listaEquipos.get(index);
+    }
+
+    public int getLimiteDeportistas() {
+        return limiteDeportistas;
+    }
+
+    public void setLimiteDeportistas(int limiteDeportistas) {
+        this.limiteDeportistas = limiteDeportistas;
     }
 }

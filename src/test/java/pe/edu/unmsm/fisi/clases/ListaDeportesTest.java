@@ -14,6 +14,6 @@ class ListaDeportesTest {
     @Test
     void loadListaDeportesTest() {
         ListaDeportes listaDeportes = new ListaDeportes();
-        assertNotEquals(0, listaDeportes.tamanio());
+        assertNotEquals(0, listaDeportes.size());
     }
 }

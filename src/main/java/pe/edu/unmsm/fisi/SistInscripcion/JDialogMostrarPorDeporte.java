@@ -1,19 +1,22 @@
 package pe.edu.unmsm.fisi.SistInscripcion;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import pe.edu.unmsm.fisi.clases.Deporte;
 import pe.edu.unmsm.fisi.clases.ListaDeportes;
-import java.awt.Point;
+
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.MouseEvent;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.DefaultListModel;
-import javax.swing.JList;
-import javax.swing.JOptionPane;
 
 public class JDialogMostrarPorDeporte extends javax.swing.JDialog {
 
-    DefaultComboBoxModel dcbmDeporte;
-    DefaultListModel dlmParticipantes;
-    ListaDeportes listaDeportes;
+    private static final long serialVersionUID = -1181046584108969131L;
+
+    private static final Logger LOG = LoggerFactory.getLogger(JDialogMostrarPorDeporte.class);
+
+    private DefaultListModel<String> dlmParticipantes;
+    private ListaDeportes listaDeportes;
 
     /**
      * Constructor de la clase jDialogMostrarPorDeporte
@@ -21,7 +24,7 @@ public class JDialogMostrarPorDeporte extends javax.swing.JDialog {
     public JDialogMostrarPorDeporte(ListaDeportes listaDeportes) {
         initComponents();
         this.listaDeportes = listaDeportes;
-        dlmParticipantes = new DefaultListModel();
+        dlmParticipantes = new DefaultListModel<>();
         jListParticipantes.setModel(dlmParticipantes);
         llenarComboBox();
     }
@@ -39,7 +42,7 @@ public class JDialogMostrarPorDeporte extends javax.swing.JDialog {
         javax.swing.JMenuItem jMenuItemEliminar = new javax.swing.JMenuItem();
         javax.swing.JPanel jPanel = new javax.swing.JPanel();
         javax.swing.JLabel jLabel1 = new javax.swing.JLabel();
-        jComboBoxDeporte = new javax.swing.JComboBox();
+        jComboBoxDeporte = new javax.swing.JComboBox<>();
         javax.swing.JLabel jLabel2 = new javax.swing.JLabel();
         jTextFieldInscritos = new javax.swing.JTextField();
         javax.swing.JLabel jLabel3 = new javax.swing.JLabel();
@@ -47,7 +50,7 @@ public class JDialogMostrarPorDeporte extends javax.swing.JDialog {
         javax.swing.JButton jButtonAceptar = new javax.swing.JButton();
         javax.swing.JPanel jPanelInscritos = new javax.swing.JPanel();
         javax.swing.JScrollPane jScrollPane1 = new javax.swing.JScrollPane();
-        jListParticipantes = new javax.swing.JList();
+        jListParticipantes = new javax.swing.JList<>();
 
         jMenuItemEliminar.setText("Eliminar");
         jMenuItemEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -171,26 +174,29 @@ public class JDialogMostrarPorDeporte extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jComboBoxDeporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxDeporteActionPerformed
+        LOG.trace(evt.paramString());
         dlmParticipantes.clear();
         int pos = jComboBoxDeporte.getSelectedIndex();
         Deporte d = listaDeportes.getDeporte(pos);
-        for (int i = 0; i < d.tamanio(); i++) {
+        for (int i = 0; i < d.teamsSize(); i++) {
             dlmParticipantes.addElement(d.getEquipo(i).getPais());
         }
-        jTextFieldInscritos.setText(String.valueOf(d.tamanio()));
+        jTextFieldInscritos.setText(String.valueOf(d.teamsSize()));
         jTextFieldCupos.setText(String.valueOf(d.getNumeroCupos()));
     }//GEN-LAST:event_jComboBoxDeporteActionPerformed
 
     private void jButtonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarActionPerformed
+        LOG.trace(evt.paramString());
         this.dispose();
 }//GEN-LAST:event_jButtonAceptarActionPerformed
 
     private void jListParticipantesMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListParticipantesMouseReleased
+        LOG.trace(evt.paramString());
         if (evt.getButton() == MouseEvent.BUTTON3) {
             JList temp = (JList) evt.getSource();
             Point p = evt.getPoint();
             temp.setSelectedIndex(temp.locationToIndex(p));
-            System.out.println(temp.getSelectedIndex());
+            LOG.debug("Selected index: {}", temp.getSelectedIndex());
             if (evt.isPopupTrigger()) {
                 jPopupMenu1.setLocation(evt.getLocationOnScreen());
 
@@ -201,21 +207,22 @@ public class JDialogMostrarPorDeporte extends javax.swing.JDialog {
     }//GEN-LAST:event_jListParticipantesMouseReleased
 
     private void jMenuItemEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEliminarActionPerformed
+        LOG.trace(evt.paramString());
         JOptionPane.showMessageDialog(this, "lol");
     }//GEN-LAST:event_jMenuItemEliminarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox jComboBoxDeporte;
-    private javax.swing.JList jListParticipantes;
+    private javax.swing.JComboBox<String> jComboBoxDeporte;
+    private javax.swing.JList<String> jListParticipantes;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JTextField jTextFieldCupos;
     private javax.swing.JTextField jTextFieldInscritos;
     // End of variables declaration//GEN-END:variables
 
-    public void llenarComboBox() {
-        dcbmDeporte = new DefaultComboBoxModel();
-        jComboBoxDeporte.setModel(dcbmDeporte);;
-        for (int i = 0; i < listaDeportes.tamanio(); i++) {
+    private void llenarComboBox() {
+        DefaultComboBoxModel<String> dcbmDeporte = new DefaultComboBoxModel<>();
+        jComboBoxDeporte.setModel(dcbmDeporte);
+        for (int i = 0; i < listaDeportes.size(); i++) {
             dcbmDeporte.addElement(listaDeportes.getDeporte(i).getNombre().trim());
         }
     }

@@ -33,7 +33,7 @@ public class JDialogVerAsistencia extends javax.swing.JDialog {
         int pos = jComboBoxDeporte.getSelectedIndex();
         Deporte d = listaDeportes.getDeporte(pos);
         Object[] o = new Object[2];
-        for (int i = 0; i < d.tamanio(); i++) {
+        for (int i = 0; i < d.teamsSize(); i++) {
             o[0] = d.getEquipo(i).getPais();
             o[1] = d.getEquipo(i).isAsistio();
             dtm.addRow(o);
@@ -212,7 +212,7 @@ public class JDialogVerAsistencia extends javax.swing.JDialog {
     public boolean comprobarAsistencia(int posDeporte) {
         int cont = 0;
         Deporte d = listaDeportes.getDeporte(posDeporte);
-        for (int i = 0; i < d.tamanio(); i++) {
+        for (int i = 0; i < d.teamsSize(); i++) {
             if (d.getEquipo(i).isAsistio()) {
                 cont++;
             }

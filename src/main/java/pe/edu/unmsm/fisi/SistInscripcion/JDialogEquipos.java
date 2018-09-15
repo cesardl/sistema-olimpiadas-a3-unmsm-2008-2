@@ -1,5 +1,7 @@
 package pe.edu.unmsm.fisi.SistInscripcion;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import pe.edu.unmsm.fisi.clases.Deporte;
 import pe.edu.unmsm.fisi.clases.Deportista;
 import pe.edu.unmsm.fisi.clases.Equipo;
@@ -13,6 +15,10 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class JDialogEquipos extends javax.swing.JDialog implements Observer {
+
+    private static final long serialVersionUID = -3499799439980169287L;
+
+    private static final Logger LOG = LoggerFactory.getLogger(JDialogEquipos.class);
 
     private JDialogCentroInscripciones vci;
     private Observable o;
@@ -256,12 +262,14 @@ public class JDialogEquipos extends javax.swing.JDialog implements Observer {
     }// </editor-fold>//GEN-END:initComponents
 
 private void jButtonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarActionPerformed
+    LOG.trace(evt.paramString());
     if (inscritos < limite) {
         modificado = true;
         String deporte = equipoTemporal.getDeporte();
         String pais = equipoTemporal.getPais();
         int posDeporte = jComboBoxDeporte.getSelectedIndex();
         JDialogDeportista ventanaDeportista = new JDialogDeportista(this, deporte, pais, null, posDeporte);
+        LOG.info("Launching JDialogDeportista...");
         ventanaDeportista.setTitle("Nuevo deportista");
         ventanaDeportista.setModalityType(ModalityType.APPLICATION_MODAL);
         ventanaDeportista.setLocationRelativeTo(this);
@@ -272,6 +280,7 @@ private void jButtonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GE
 }//GEN-LAST:event_jButtonAgregarActionPerformed
 
 private void jButtonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarActionPerformed
+    LOG.trace(evt.paramString());
     edicion = jTableParticipantes.getSelectedRow();
 
     if (edicion == -1) {
@@ -284,6 +293,7 @@ private void jButtonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN
         String pais = (String) jComboBoxDeporte.getSelectedItem();
         int posDeporte = jComboBoxDeporte.getSelectedIndex();
         ventEditar = new JDialogDeportista(this, deporte, pais, d, posDeporte);
+        LOG.info("Launching JDialogDeportista...");
         ventEditar.setTitle("Editar Deportista");
         ventEditar.setModalityType(ModalityType.APPLICATION_MODAL);
         ventEditar.setLocationRelativeTo(this);
@@ -292,10 +302,12 @@ private void jButtonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN
 }//GEN-LAST:event_jButtonEditarActionPerformed
 
 private void jButtonMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMostrarActionPerformed
+    LOG.trace(evt.paramString());
     mostrarEquipo();
 }//GEN-LAST:event_jButtonMostrarActionPerformed
 
 private void jButtonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarActionPerformed
+    LOG.trace(evt.paramString());
     JOptionPane.showMessageDialog(this, "Se guardaron los datos",
             this.getTitle(), JOptionPane.INFORMATION_MESSAGE);
     guardar();
@@ -303,12 +315,13 @@ private void jButtonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GE
 }//GEN-LAST:event_jButtonGuardarActionPerformed
 
 private void jButtonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarActionPerformed
-    if (modificado == true) {
+    LOG.trace(evt.paramString());
+    if (modificado) {
         int opcion = JOptionPane.showConfirmDialog(this,
                 "Ha modificado la base de datos, ¿desea guardar los cambios?",
                 "Guardando cambios", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (opcion == JOptionPane.YES_OPTION) {
-            jButtonGuardarActionPerformed(null);
+            jButtonGuardarActionPerformed(evt);
             o.addObserver(vci);
             o.notifyObservers(listaDeportes);
             vci.update(o, listaDeportes);
@@ -399,10 +412,10 @@ private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//G
         dcbmPais = new DefaultComboBoxModel();
         jComboBoxDeporte.setModel(dcbmDeporte);
         jComboBoxPais.setModel(dcbmPais);
-        for (int i = 0; i < listaDeportes.tamanio(); i++) {
+        for (int i = 0; i < listaDeportes.size(); i++) {
             dcbmDeporte.addElement(listaDeportes.getDeporte(i).getNombre());
         }
-        for (int i = 0; i < listaPaises.tamaño(); i++) {
+        for (int i = 0; i < listaPaises.size(); i++) {
             dcbmPais.addElement(listaPaises.getPais(i).getNombre());
         }
     }
@@ -428,7 +441,7 @@ private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//G
         }
     }
 
-    public void llenarTabla(Equipo e) {
+    private void llenarTabla(Equipo e) {
         dtmEquipo.setRowCount(0);
         Vector fila;
         int i = 0;
@@ -447,7 +460,7 @@ private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//G
         Deportista deportista = (Deportista) args[0];
         String tipo = (String) args[1];
         if (tipo.equals("Nuevo deportista")) {
-            Vector fila = new Vector();
+            Vector<String> fila = new Vector<>();
             fila.add(deportista.getCodigo());
             fila.add(deportista.getNombres() + " " + deportista.getApellidos());
             dtmEquipo.addRow(fila);
@@ -457,7 +470,7 @@ private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//G
         } else {
             equipoTemporal.eliminarDeportista(edicion);
             dtmEquipo.removeRow(edicion);
-            Vector fila = new Vector();
+            Vector<String> fila = new Vector<>();
             fila.add(deportista.getCodigo());
             fila.add(deportista.getNombres() + " " + deportista.getApellidos());
             dtmEquipo.addRow(fila);

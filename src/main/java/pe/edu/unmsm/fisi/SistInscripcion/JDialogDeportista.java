@@ -344,7 +344,7 @@ private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//G
 }//GEN-LAST:event_jButtonCancelarActionPerformed
 
 private void jButtonGenerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGenerarActionPerformed
-    String str1 = "", str2 = "";
+    String str1, str2;
     if (posDeporte < 10) {
         str1 = 0 + String.valueOf(posDeporte + 1);
     } else {
@@ -353,9 +353,9 @@ private void jButtonGenerarActionPerformed(java.awt.event.ActionEvent evt) {//GE
     int r = (int) Math.round(Math.random() * 1000);
     if (r < 10) {
         str2 = 0 + 0 + String.valueOf(r);
-    } else if (r >= 10 && r <= 99) {
+    } else if (r <= 99) {
         str2 = 0 + String.valueOf(r);
-    } else if (r >= 100) {
+    } else {
         str2 = String.valueOf(r);
     }
     str1 = str1 + "000";
@@ -393,10 +393,10 @@ private void jButtonGenerarActionPerformed(java.awt.event.ActionEvent evt) {//GE
         jComboBoxDeporte.setModel(dcbmDeporte);
         jComboBoxPais.setModel(dcbmPais);
         for (int i = 2000; i > 1900; i--) {
-            jComboBoxAño.addItem(new String("" + i + ""));
+            jComboBoxAño.addItem("" + i + "");
         }
         for (int i = 1; i < 32; i++) {
-            jComboBoxDia.addItem(new String("" + i + ""));
+            jComboBoxDia.addItem("" + i + "");
 
         }
         String dir = System.getProperty("user.dir");

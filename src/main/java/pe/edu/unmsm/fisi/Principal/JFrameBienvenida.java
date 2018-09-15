@@ -53,12 +53,14 @@ public class JFrameBienvenida extends javax.swing.JFrame {
         jLabelImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesOlimpiadas/antorcha1.jpg"))); // NOI18N
         jLabelImagen.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        jTextFieldUser.setText("fisi");
         jTextFieldUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldUserActionPerformed(evt);
             }
         });
 
+        jPasswordFieldPswd.setText("algoritmica");
         jPasswordFieldPswd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jPasswordFieldPswdActionPerformed(evt);
@@ -156,7 +158,7 @@ private void jTextFieldUserActionPerformed(java.awt.event.ActionEvent evt) {//GE
     private javax.swing.JTextField jTextFieldUser;
     // End of variables declaration//GEN-END:variables
 
-    public boolean SecuenciaValidacion() {
+    private boolean SecuenciaValidacion() {
         String cuenta = jTextFieldUser.getText().trim();
         String contrasenia = new String(jPasswordFieldPswd.getPassword());
         try {
@@ -164,6 +166,7 @@ private void jTextFieldUserActionPerformed(java.awt.event.ActionEvent evt) {//GE
             GUICargar.setLocationRelativeTo(this);
             GUICargar.setVisible(true);
         } catch (Exception e) {
+            LOG.error(e.getMessage(), e);
         }
         if (cuenta.equals(id) && contrasenia.equals(pass)) {
             LOG.info("Logging successful");
@@ -198,7 +201,7 @@ private void jTextFieldUserActionPerformed(java.awt.event.ActionEvent evt) {//GE
         }
     }
 
-    public void limpiar() {
+    private void limpiar() {
         jTextFieldUser.setText("");
         jPasswordFieldPswd.setText("");
         jTextFieldUser.requestFocus();

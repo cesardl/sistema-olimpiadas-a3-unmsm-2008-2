@@ -19,18 +19,18 @@ public class ListaDeportes implements Serializable {
         listaDeportes = new ArrayList<>();
         String dir = System.getProperty("user.dir");
         File fDeporte = new File(dir + "//src//main//resources//Extras//deportes.obj");
-        File fTamañoEquipo = new File(dir + "//src//main//resources//Extras//tamañoEquipo.obj");
+        File fTeamSize = new File(dir + "//src//main//resources//Extras//tamañoEquipo.obj");
         try {
             FileInputStream fisDeporte = new FileInputStream(fDeporte);
-            FileInputStream fisTamañoEquipo = new FileInputStream(fTamañoEquipo);
+            FileInputStream fisTeamSize = new FileInputStream(fTeamSize);
             ObjectInputStream oisDeporte = new ObjectInputStream(fisDeporte);
-            ObjectInputStream oisTamañoEquipo = new ObjectInputStream(fisTamañoEquipo);
+            ObjectInputStream oisTeamSize = new ObjectInputStream(fisTeamSize);
             Vector vDeporte = (Vector) oisDeporte.readObject();
-            Vector vTamañoEquipo = (Vector) oisTamañoEquipo.readObject();
+            Vector vTeamSize = (Vector) oisTeamSize.readObject();
             oisDeporte.close();
-            oisTamañoEquipo.close();
+            oisTeamSize.close();
             for (int i = 0; i < vDeporte.size(); i++) {
-                int teamSize = Integer.parseInt(vTamañoEquipo.get(i).toString().trim());
+                int teamSize = Integer.parseInt(vTeamSize.get(i).toString().trim());
                 listaDeportes.add(new Deporte((String) vDeporte.get(i), 16, teamSize));
             }
         } catch (IOException | ClassNotFoundException | NumberFormatException ex) {
@@ -42,7 +42,7 @@ public class ListaDeportes implements Serializable {
         return listaDeportes.get(pos);
     }
 
-    public int tamanio() {
+    public int size() {
         return listaDeportes.size();
     }
 

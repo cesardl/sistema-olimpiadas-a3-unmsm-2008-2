@@ -1,24 +1,27 @@
 package pe.edu.unmsm.fisi.SistInscripcion;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import pe.edu.unmsm.fisi.Principal.JFramePrincipal;
 import pe.edu.unmsm.fisi.clases.Deporte;
 import pe.edu.unmsm.fisi.clases.Equipo;
 import pe.edu.unmsm.fisi.clases.ListaDeportes;
 import pe.edu.unmsm.fisi.clases.ListaPaises;
-import pe.edu.unmsm.fisi.Principal.JFramePrincipal;
+
+import javax.swing.*;
 import java.util.Observable;
 import java.util.Observer;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.DefaultListModel;
 
 public class JDialogCentroInscripciones extends javax.swing.JDialog implements Observer {
 
-    private DefaultListModel dlmDelegacion;
+    private static final long serialVersionUID = 8634772200493460490L;
+
+    private static final Logger LOG = LoggerFactory.getLogger(JDialogCentroInscripciones.class);
+
+    private DefaultListModel<String> dlmDelegacion;
     private Observable o;
     private JFramePrincipal vp;
-    private JDialogEquipos ventEquipo;
-    private JDialogMostrarPorDeporte dmpd;
-    private ListaPaises listaPaises;
-    private DefaultComboBoxModel dcbmPais;
+    private final ListaPaises listaPaises;
     private ListaDeportes listaDeportes;
 
     public JDialogCentroInscripciones(ListaDeportes bd) {
@@ -26,8 +29,7 @@ public class JDialogCentroInscripciones extends javax.swing.JDialog implements O
         o = new Observable();
         vp = new JFramePrincipal();
         initComponents();
-        this.setTitle("Centro de Inscripciones");
-        dlmDelegacion = new DefaultListModel();
+        dlmDelegacion = new DefaultListModel<>();
         jListDelegacion.setModel(dlmDelegacion);
         listaPaises = new ListaPaises();
         llenarComboBox();
@@ -40,26 +42,22 @@ public class JDialogCentroInscripciones extends javax.swing.JDialog implements O
         javax.swing.JTabbedPane jTabbedPane = new javax.swing.JTabbedPane();
         javax.swing.JPanel jPanel = new javax.swing.JPanel();
         javax.swing.JLabel jLabelPais = new javax.swing.JLabel();
-        jComboBoxPais = new javax.swing.JComboBox();
+        jComboBoxPais = new javax.swing.JComboBox<>();
         javax.swing.JButton jButtonEntrar = new javax.swing.JButton();
         javax.swing.JButton jButtonMostrarPorDeporte = new javax.swing.JButton();
         javax.swing.JLabel jLabelLimite = new javax.swing.JLabel();
-        javax.swing.JTextField jTextFieldLimite = new javax.swing.JTextField();
+        jTextFieldLimite = new javax.swing.JTextField();
         javax.swing.JPanel jPanel1 = new javax.swing.JPanel();
         javax.swing.JScrollPane jScrollPane2 = new javax.swing.JScrollPane();
-        jListDelegacion = new javax.swing.JList();
+        jListDelegacion = new javax.swing.JList<>();
         javax.swing.JButton jButtonSalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Centro de Inscripciones");
         setResizable(false);
 
         jLabelPais.setText("Pais:");
 
-        jComboBoxPais.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                jComboBoxPaisItemStateChanged(evt);
-            }
-        });
         jComboBoxPais.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxPaisActionPerformed(evt);
@@ -186,25 +184,25 @@ public class JDialogCentroInscripciones extends javax.swing.JDialog implements O
     }// </editor-fold>//GEN-END:initComponents
 
 private void jButtonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEntrarActionPerformed
-    ventEquipo = new JDialogEquipos(this, null, (String) jComboBoxPais.getSelectedItem(), listaDeportes);
+    LOG.trace(evt.paramString());
+    JDialogEquipos ventEquipo = new JDialogEquipos(this, null, jComboBoxPais.getModel().getSelectedItem().toString(), listaDeportes);
+    LOG.info("Launching JDialogEquipos...");
     ventEquipo.setLocationRelativeTo(this);
     ventEquipo.setModalityType(ModalityType.APPLICATION_MODAL);
     ventEquipo.setVisible(true);
 }//GEN-LAST:event_jButtonEntrarActionPerformed
 
 private void jButtonMostrarPorDeporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMostrarPorDeporteActionPerformed
-    dmpd = new JDialogMostrarPorDeporte(listaDeportes);
+    LOG.trace(evt.paramString());
+    JDialogMostrarPorDeporte dmpd = new JDialogMostrarPorDeporte(listaDeportes);
+    LOG.info("Launching JDialogMostrarPorDeporte...");
     dmpd.setModalityType(ModalityType.APPLICATION_MODAL);
     dmpd.setLocationRelativeTo(this);
     dmpd.setVisible(true);
 }//GEN-LAST:event_jButtonMostrarPorDeporteActionPerformed
 
-private void jComboBoxPaisItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxPaisItemStateChanged
-
-}//GEN-LAST:event_jComboBoxPaisItemStateChanged
-
 private void jButtonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirActionPerformed
-    // TODO add your handling code here:
+    LOG.trace(evt.paramString());
     o.addObserver(vp);
     o.notifyObservers(listaDeportes);
     vp.update(o, listaDeportes);
@@ -212,38 +210,39 @@ private void jButtonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
 }//GEN-LAST:event_jButtonSalirActionPerformed
 
 private void jComboBoxPaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxPaisActionPerformed
-    // TODO add your handling code here:
+    LOG.trace(evt.paramString());
     dlmDelegacion.clear();
     Equipo e;
     Deporte d;
-    String nombrePais = jComboBoxPais.getSelectedItem().toString().trim();
-    for (int i = 0; i < listaDeportes.tamanio(); i++) {
+    String countryName = jComboBoxPais.getModel().getSelectedItem().toString();
+    for (int i = 0; i < listaDeportes.size(); i++) {
         d = listaDeportes.getDeporte(i);
-        for (int j = 0; j < d.tamanio(); j++) {
+        for (int j = 0; j < d.teamsSize(); j++) {
             e = d.getEquipo(j);
-            if (e.getPais().trim().equals(nombrePais)) {
+            if (e.getPais().trim().equals(countryName)) {
+                LOG.info("Loading information of {}",countryName);
                 dlmDelegacion.addElement(e.getDeporte());
+                jTextFieldLimite.setText(String.valueOf(e.getLimiteDeportistas()));
             }
         }
-
     }
 }//GEN-LAST:event_jComboBoxPaisActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox jComboBoxPais;
-    private javax.swing.JList jListDelegacion;
+    private javax.swing.JComboBox<String> jComboBoxPais;
+    private javax.swing.JList<String> jListDelegacion;
+    private javax.swing.JTextField jTextFieldLimite;
     // End of variables declaration//GEN-END:variables
 
-    public void llenarComboBox() {
-        dcbmPais = new DefaultComboBoxModel();
-        jComboBoxPais.setModel(dcbmPais);
-        for (int i = 0; i < listaPaises.tamaño(); i++) {
+    private void llenarComboBox() {
+        DefaultComboBoxModel<String> dcbmPais = new DefaultComboBoxModel<>();
+        for (int i = 0; i < listaPaises.size(); i++) {
             dcbmPais.addElement(listaPaises.getPais(i).getNombre());
         }
+        jComboBoxPais.setModel(dcbmPais);
     }
 
     public void update(Observable o, Object arg) {
-        ListaDeportes ld = (ListaDeportes) arg;
-        this.listaDeportes = ld;
+        this.listaDeportes = (ListaDeportes) arg;
     }
 }

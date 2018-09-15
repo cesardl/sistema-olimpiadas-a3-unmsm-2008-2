@@ -1,14 +1,22 @@
 package pe.edu.unmsm.fisi.clases;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javax.swing.*;
 import java.awt.*;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Vector;
 
-public class Metodos implements Serializable {
+public class Metodos {
 
-    public static Vector cargarData(String archivo) {
-        Vector vector = new Vector();
+    private static final Logger LOG = LoggerFactory.getLogger(Metodos.class);
+
+    public static Vector cargarData(final String archivo) {
+        Vector<String> vector = new Vector<>();
         try {
             File file = new File(archivo);
             BufferedReader br = new BufferedReader(new FileReader(file));
@@ -19,7 +27,7 @@ public class Metodos implements Serializable {
             }
             br.close();
         } catch (IOException ioe) {
-            System.out.println("Error: " + ioe);
+            LOG.error("Error: {}", ioe.getMessage(), ioe);
         }
         return vector;
     }
@@ -32,13 +40,13 @@ public class Metodos implements Serializable {
     }
 
     public static void deshabilitarPanel(JPanel jPanel) {
-        Component c[] = jPanel.getComponents();
-        for (int i = 0; i < c.length; i++) {
-            if (c[i] instanceof JScrollPane) {
-                JScrollPane jsp = (JScrollPane) c[i];
+        Component components[] = jPanel.getComponents();
+        for (Component c : components) {
+            if (c instanceof JScrollPane) {
+                JScrollPane jsp = (JScrollPane) c;
                 jsp.getViewport().getView().setEnabled(false);
             } else {
-                c[i].setEnabled(false);
+                c.setEnabled(false);
             }
         }
     }

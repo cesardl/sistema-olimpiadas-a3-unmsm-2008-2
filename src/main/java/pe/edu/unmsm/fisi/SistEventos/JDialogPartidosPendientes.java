@@ -1,15 +1,22 @@
 package pe.edu.unmsm.fisi.SistEventos;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import pe.edu.unmsm.fisi.SistCompetencias.JDialogCompDos;
 import pe.edu.unmsm.fisi.clases.Competencia;
 import pe.edu.unmsm.fisi.clases.Equipo;
 import pe.edu.unmsm.fisi.clases.Evento;
-import pe.edu.unmsm.fisi.SistCompetencias.JDialogCompDos;
+
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
-import javax.swing.DefaultListModel;
 
 public class JDialogPartidosPendientes extends javax.swing.JDialog implements Observer {
+
+    private static final long serialVersionUID = -9106047795783474844L;
+
+    private static final Logger LOG = LoggerFactory.getLogger(JDialogPartidosPendientes.class);
 
     private Evento evento;
     private ArrayList<Competencia> listaCompetencias;
@@ -187,7 +194,7 @@ private void jButtonMostrarResultadosActionPerformed(java.awt.event.ActionEvent 
 
     public void update(Observable o, Object arg) {
         Equipo eq = (Equipo) arg;
-        System.out.println(eq);
+        LOG.debug("[OBSERVABLE] updating country: {}, sport: {}", eq.getPais(), eq.getDeporte());
         clasificados.add(eq);
         dlm.remove(0);
         partida++;

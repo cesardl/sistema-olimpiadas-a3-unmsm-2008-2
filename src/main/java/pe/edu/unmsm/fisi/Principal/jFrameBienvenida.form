@@ -138,11 +138,17 @@
           </AuxValues>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldUser">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="fisi"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldUserActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JPasswordField" name="jPasswordFieldPswd">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="algoritmica"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jPasswordFieldPswdActionPerformed"/>
           </Events>

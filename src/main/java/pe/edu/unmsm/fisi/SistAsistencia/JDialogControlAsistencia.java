@@ -164,9 +164,9 @@ private void jButtonMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GE
     String deporte = String.valueOf(jComboBoxDeportes.getSelectedItem()).trim();
     String pais = "";
     dlmParticipantes.clear();
-    for (int i = 0; i < listaDeportes.tamanio(); i++) {
+    for (int i = 0; i < listaDeportes.size(); i++) {
         if (listaDeportes.getDeporte(i).getNombre().trim().equals(deporte)) {
-            for (int j = 0; j < listaDeportes.getDeporte(i).tamanio(); j++) {
+            for (int j = 0; j < listaDeportes.getDeporte(i).teamsSize(); j++) {
                 pais = listaDeportes.getDeporte(i).getEquipo(j).getPais().trim();
                 dlmParticipantes.addElement(pais);
             }
@@ -199,7 +199,7 @@ private void jButtonTerminarActionPerformed(java.awt.event.ActionEvent evt) {//G
     public void llenarComboBox() {
         dcbmDeporte = new DefaultComboBoxModel();
         jComboBoxDeportes.setModel(dcbmDeporte);
-        for (int i = 0; i < listaDeportes.tamanio(); i++) {
+        for (int i = 0; i < listaDeportes.size(); i++) {
             dcbmDeporte.addElement(listaDeportes.getDeporte(i).getNombre());
         }
     }

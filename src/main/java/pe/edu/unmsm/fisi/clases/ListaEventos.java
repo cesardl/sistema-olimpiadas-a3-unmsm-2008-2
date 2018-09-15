@@ -11,7 +11,7 @@ public class ListaEventos {
 
     private static final Logger LOG = LoggerFactory.getLogger(ListaEventos.class);
 
-    ArrayList<Evento> listaEventos;
+    private ArrayList<Evento> listaEventos;
 
     public ListaEventos(ListaDeportes listaDeportes) {
         listaEventos = new ArrayList<>();
@@ -24,7 +24,7 @@ public class ListaEventos {
             ObjectInputStream oisEpc = new ObjectInputStream(fisEpc);
             Vector vEpc = (Vector) oisEpc.readObject();
             oisEpc.close();
-            for (int i = 0; i < listaDeportes.tamanio(); i++) {
+            for (int i = 0; i < listaDeportes.size(); i++) {
                 nombre = listaDeportes.getDeporte(i).getNombre();
                 int epc = Integer.parseInt(vEpc.get(i).toString().trim());
                 listaEquipos = listaDeportes.getDeporte(i).getListaEquipos();
@@ -41,9 +41,9 @@ public class ListaEventos {
 
     public Evento get(String deporte) {
         Evento e = null;
-        for (int i = 0; i < listaEventos.size(); i++) {
-            if (listaEventos.get(i).getNombreDeporte().equals(deporte)) {
-                e = listaEventos.get(i);
+        for (Evento listaEvento : listaEventos) {
+            if (listaEvento.getNombreDeporte().equals(deporte)) {
+                e = listaEvento;
             }
         }
         return e;

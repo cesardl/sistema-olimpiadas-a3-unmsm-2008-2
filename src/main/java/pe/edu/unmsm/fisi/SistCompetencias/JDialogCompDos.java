@@ -1,5 +1,7 @@
 package pe.edu.unmsm.fisi.SistCompetencias;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import pe.edu.unmsm.fisi.clases.Competencia;
 import pe.edu.unmsm.fisi.clases.Equipo;
 import pe.edu.unmsm.fisi.clases.Metodos;
@@ -8,6 +10,10 @@ import java.util.Observable;
 import pe.edu.unmsm.fisi.SistEventos.JDialogPartidosPendientes;
 
 public class JDialogCompDos extends javax.swing.JDialog {
+
+    private static final long serialVersionUID = -1021218027812699286L;
+
+    private static final Logger LOG = LoggerFactory.getLogger(JDialogCompDos.class);
 
     private Competencia c;
     private Observable o;
@@ -192,11 +198,11 @@ private void jButtonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GE
     o.addObserver(jdpp);
     Equipo e;
     if (nHome > nAway) {
-        System.out.println("home");
+        LOG.debug("home");
         e = c.getCompetidores().get(0);
 
     } else {
-        System.out.println("away");
+        LOG.debug("away");
         e = c.getCompetidores().get(1);
     }
     o.notifyObservers(e);

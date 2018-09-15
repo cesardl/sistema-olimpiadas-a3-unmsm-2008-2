@@ -2,17 +2,17 @@ package pe.edu.unmsm.fisi.Principal;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import pe.edu.unmsm.fisi.SistInscripcion.JDialogCentroInscripciones;
-import pe.edu.unmsm.fisi.clases.ListaDeportes;
 import pe.edu.unmsm.fisi.SistAsistencia.JDialogControlAsistencia;
 import pe.edu.unmsm.fisi.SistEventos.JDialogVerAsistencia;
+import pe.edu.unmsm.fisi.SistInscripcion.JDialogCentroInscripciones;
+import pe.edu.unmsm.fisi.clases.ListaDeportes;
 
-import java.awt.*;
+import javax.swing.*;
 import java.awt.Dialog.ModalityType;
+import java.awt.*;
 import java.io.*;
 import java.util.Observable;
 import java.util.Observer;
-import javax.swing.*;
 
 /**
  * Esto la clase que invoca a los otro sistemas. Esta es una ventana observaor.
@@ -225,6 +225,7 @@ private void jMenuItemCentroInscripcionesActionPerformed(java.awt.event.ActionEv
         listaDeportes = new ListaDeportes();
     }
     JDialogCentroInscripciones vci = new JDialogCentroInscripciones(listaDeportes);
+    LOG.info("Launching JDialogCentroInscripciones...");
     vci.setModalityType(modal);
     vci.setLocationRelativeTo(this);
     vci.setVisible(true);
@@ -234,6 +235,7 @@ private void jMenuItemCentroInscripcionesActionPerformed(java.awt.event.ActionEv
      * Para poder guardar la base de datos
      */
 private void jMenuItemGuardarBDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemGuardarBDActionPerformed
+    LOG.trace(evt.paramString());
     try {
         jfc.showSaveDialog(this);
         File f = jfc.getSelectedFile();
@@ -250,15 +252,20 @@ private void jMenuItemGuardarBDActionPerformed(java.awt.event.ActionEvent evt) {
      * Para poder abrir la Base de Datos
      */
 private void jMenuItemAbrirBDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAbrirBDActionPerformed
-    try {
-        jfc.showOpenDialog(this);
-        File f = jfc.getSelectedFile();
-        FileInputStream fis = new FileInputStream(f);
-        ObjectInputStream ois = new ObjectInputStream(fis);
-        listaDeportes = (ListaDeportes) ois.readObject();
-        ois.close();
-    } catch (HeadlessException | IOException | ClassNotFoundException e) {
-        LOG.error(e.getMessage(), e);
+    LOG.trace(evt.paramString());
+    jfc.showOpenDialog(this);
+    File f = jfc.getSelectedFile();
+
+    if (f != null) {
+        LOG.info("Reading Sports database");
+        try (FileInputStream fis = new FileInputStream(f);
+             ObjectInputStream ois = new ObjectInputStream(fis)) {
+
+            listaDeportes = (ListaDeportes) ois.readObject();
+            LOG.info("Loaded {} sports", listaDeportes.size());
+        } catch (HeadlessException | IOException | ClassNotFoundException e) {
+            LOG.error(e.getMessage(), e);
+        }
     }
 }//GEN-LAST:event_jMenuItemAbrirBDActionPerformed
 
@@ -267,6 +274,7 @@ private void jMenuItemAbrirBDActionPerformed(java.awt.event.ActionEvent evt) {//
      */
 private void jMenuItemControlAsistenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemControlAsistenciaActionPerformed
     JDialogControlAsistencia vca = new JDialogControlAsistencia(this, modal, listaDeportes);
+    LOG.info("Launching JDialogControlAsistencia...");
     vca.setLocationRelativeTo(this);
     vca.setVisible(true);
 }//GEN-LAST:event_jMenuItemControlAsistenciaActionPerformed
@@ -284,6 +292,7 @@ private void jMenuItemTemasAyudaActionPerformed(java.awt.event.ActionEvent evt) 
      */
 private void jMenuItemIniciarJuegosOlimpicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemIniciarJuegosOlimpicosActionPerformed
     JDialogVerAsistencia dialogVerAsistencia = new JDialogVerAsistencia(listaDeportes);
+    LOG.info("Launching JDialogVerAsistencia...");
     dialogVerAsistencia.setModalityType(ModalityType.APPLICATION_MODAL);
     dialogVerAsistencia.setLocationRelativeTo(this);
     dialogVerAsistencia.setVisible(true);

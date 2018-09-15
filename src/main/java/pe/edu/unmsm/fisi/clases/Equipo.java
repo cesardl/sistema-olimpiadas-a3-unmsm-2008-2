@@ -22,7 +22,7 @@ public class Equipo implements Serializable {
     public void calcularLimiteDeportistas(String deporte) {
         ListaDeportes l = new ListaDeportes();
         Deporte d = l.getDeporte(deporte);
-        this.limiteDeportistas = d.limiteDeportistas;
+        this.limiteDeportistas = d.getLimiteDeportistas();
     }
 
     public int getLimiteDeportistas() {

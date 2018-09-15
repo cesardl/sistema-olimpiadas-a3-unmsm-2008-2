@@ -160,7 +160,7 @@ private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//G
     public void mostrarDatosTabla(ListaDeportes ld, int pos) {
         Deporte d = ld.getDeporte(pos);
         dtmParticipantes.setRowCount(0);
-        for (int i = 0; i < d.tamanio(); i++) {
+        for (int i = 0; i < d.teamsSize(); i++) {
             Object[] rowData = {
                 d.getEquipo(i).getPais(),
                 d.getEquipo(i).isAsistio()

@@ -24,11 +24,13 @@ public class OlympicGamesApp {
     public static void main(String args[]) {
         if (System.getProperty("os.name").contains("Windows")) {
             try {
+                LOG.debug("Setting look and feel");
                 UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
             } catch (ClassNotFoundException | IllegalAccessException | InstantiationException | UnsupportedLookAndFeelException ex) {
                 LOG.error(ex.getMessage(), ex);
             }
         }
+        LOG.info("Launching application...");
         javax.swing.SwingUtilities.invokeLater(() -> new JFrameBienvenida().setVisible(true));
     }
 }

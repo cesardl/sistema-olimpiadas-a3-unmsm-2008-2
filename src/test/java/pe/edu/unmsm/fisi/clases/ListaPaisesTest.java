@@ -14,6 +14,6 @@ class ListaPaisesTest {
     @Test
     void loadListaPaisesTest() {
         ListaPaises listaPaises = new ListaPaises();
-        assertNotEquals(0, listaPaises.tamaño());
+        assertNotEquals(0, listaPaises.size());
     }
 }
