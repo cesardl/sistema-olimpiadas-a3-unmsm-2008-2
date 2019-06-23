@@ -21,7 +21,7 @@ public class OlympicGamesApp {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         if (System.getProperty("os.name").contains("Windows")) {
             try {
                 LOG.debug("Setting look and feel");

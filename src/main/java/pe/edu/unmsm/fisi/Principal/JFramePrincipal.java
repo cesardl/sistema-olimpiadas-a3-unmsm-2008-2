@@ -15,7 +15,9 @@ import java.util.Observable;
 import java.util.Observer;
 
 /**
- * Esto la clase que invoca a los otro sistemas. Esta es una ventana observaor.
+ * Esto la clase que invoca a los otro sistemas. Esta es una ventana observator.
+ *
+ * @author Cesardl
  */
 public class JFramePrincipal extends javax.swing.JFrame implements Observer {
 
@@ -199,6 +201,8 @@ public class JFramePrincipal extends javax.swing.JFrame implements Observer {
      * Sale del Sistema
      */
 private void jMenuItemSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSalirActionPerformed
+    LOG.trace(evt.paramString());
+
     int opc = JOptionPane.showConfirmDialog(this, "Seguro que desea salir",
             this.getTitle(), JOptionPane.YES_NO_OPTION);
     if (opc == 0) {
@@ -210,6 +214,8 @@ private void jMenuItemSalirActionPerformed(java.awt.event.ActionEvent evt) {//GE
      * informacion de los desarrolladores
      */
 private void jMenuItemAcercaDeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAcercaDeActionPerformed
+    LOG.trace(evt.paramString());
+
     java.awt.EventQueue.invokeLater(() -> {
         JDialogAcercaDe jdad = new JDialogAcercaDe(null, modal);
         jdad.setLocationRelativeTo(null);
@@ -221,9 +227,8 @@ private void jMenuItemAcercaDeActionPerformed(java.awt.event.ActionEvent evt) {/
      * Abre el centro de inscripciones
      */
 private void jMenuItemCentroInscripcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCentroInscripcionesActionPerformed
-    if (listaDeportes == null) {
-        listaDeportes = new ListaDeportes();
-    }
+    LOG.trace(evt.paramString());
+
     JDialogCentroInscripciones vci = new JDialogCentroInscripciones(listaDeportes);
     LOG.info("Launching JDialogCentroInscripciones...");
     vci.setModalityType(modal);
@@ -236,13 +241,15 @@ private void jMenuItemCentroInscripcionesActionPerformed(java.awt.event.ActionEv
      */
 private void jMenuItemGuardarBDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemGuardarBDActionPerformed
     LOG.trace(evt.paramString());
-    try {
-        jfc.showSaveDialog(this);
-        File f = jfc.getSelectedFile();
-        FileOutputStream fos = new FileOutputStream(f);
-        ObjectOutputStream oos = new ObjectOutputStream(fos);
+
+    jfc.showSaveDialog(this);
+    File f = jfc.getSelectedFile();
+
+    try (FileOutputStream fos = new FileOutputStream(f);
+            ObjectOutputStream oos = new ObjectOutputStream(fos)) {
+
         oos.writeObject(listaDeportes);
-        oos.close();
+
     } catch (HeadlessException | IOException e) {
         LOG.error(e.getMessage(), e);
     }
@@ -259,10 +266,9 @@ private void jMenuItemAbrirBDActionPerformed(java.awt.event.ActionEvent evt) {//
     if (f != null) {
         LOG.info("Reading Sports database");
         try (FileInputStream fis = new FileInputStream(f);
-             ObjectInputStream ois = new ObjectInputStream(fis)) {
+                ObjectInputStream ois = new ObjectInputStream(fis)) {
 
             listaDeportes = (ListaDeportes) ois.readObject();
-            LOG.info("Loaded {} sports", listaDeportes.size());
         } catch (HeadlessException | IOException | ClassNotFoundException e) {
             LOG.error(e.getMessage(), e);
         }

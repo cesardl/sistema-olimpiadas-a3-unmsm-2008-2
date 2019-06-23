@@ -1,7 +1,7 @@
 package pe.edu.unmsm.fisi.SistCompetencias;
 
 import javax.swing.JOptionPane;
-import pe.edu.unmsm.fisi.clases.Metodos;
+import pe.edu.unmsm.fisi.utils.Metodos;
 
 public class JDialogCompVarios extends javax.swing.JDialog {
 

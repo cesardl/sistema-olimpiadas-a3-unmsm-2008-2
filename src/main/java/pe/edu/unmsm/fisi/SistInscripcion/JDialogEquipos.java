@@ -2,17 +2,13 @@ package pe.edu.unmsm.fisi.SistInscripcion;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import pe.edu.unmsm.fisi.clases.Deporte;
-import pe.edu.unmsm.fisi.clases.Deportista;
-import pe.edu.unmsm.fisi.clases.Equipo;
-import pe.edu.unmsm.fisi.clases.ListaDeportes;
-import pe.edu.unmsm.fisi.clases.ListaPaises;
+import pe.edu.unmsm.fisi.clases.*;
+
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.Vector;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
 public class JDialogEquipos extends javax.swing.JDialog implements Observer {
 
@@ -44,10 +40,6 @@ public class JDialogEquipos extends javax.swing.JDialog implements Observer {
         dtmEquipo = (DefaultTableModel) jTableParticipantes.getModel();
         jTableParticipantes.setModel(dtmEquipo);
         llenarComboBox();
-        jButtonAgregar.setEnabled(false);
-        jButtonEditar.setEnabled(false);
-        jButtonEliminar.setEnabled(false);
-        jButtonGuardar.setEnabled(false);
         verificarDatosEntrada(deporte, pais);
         modificado = false;
     }
@@ -103,6 +95,7 @@ public class JDialogEquipos extends javax.swing.JDialog implements Observer {
         jScrollPane1.setViewportView(jTableParticipantes);
 
         jButtonAgregar.setText("Agregar");
+        jButtonAgregar.setEnabled(false);
         jButtonAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAgregarActionPerformed(evt);
@@ -110,6 +103,7 @@ public class JDialogEquipos extends javax.swing.JDialog implements Observer {
         });
 
         jButtonEditar.setText("Editar");
+        jButtonEditar.setEnabled(false);
         jButtonEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonEditarActionPerformed(evt);
@@ -117,6 +111,7 @@ public class JDialogEquipos extends javax.swing.JDialog implements Observer {
         });
 
         jButtonEliminar.setText("Eliminar");
+        jButtonEliminar.setEnabled(false);
         jButtonEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonEliminarActionPerformed(evt);
@@ -137,6 +132,7 @@ public class JDialogEquipos extends javax.swing.JDialog implements Observer {
         });
 
         jButtonGuardar.setText("Guardar");
+        jButtonGuardar.setEnabled(false);
         jButtonGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonGuardarActionPerformed(evt);
@@ -335,6 +331,7 @@ private void jButtonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GE
 }//GEN-LAST:event_jButtonAceptarActionPerformed
 
 private void jButtonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarActionPerformed
+    LOG.trace(evt.paramString());
     int eliminar = jTableParticipantes.getSelectedRow();
     if (eliminar == -1) {
         JOptionPane.showMessageDialog(this, "Seleccione un deportista", this.getTitle(), JOptionPane.ERROR_MESSAGE);
@@ -346,10 +343,17 @@ private void jButtonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//G
 }//GEN-LAST:event_jButtonEliminarActionPerformed
 
 private void jComboBoxDeporteItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxDeporteItemStateChanged
+    LOG.trace(evt.paramString());
     jButtonMostrar.setEnabled(true);
+
+    jButtonAgregar.setEnabled(false);
+    jButtonEditar.setEnabled(false);
+    jButtonEliminar.setEnabled(false);
+    jButtonGuardar.setEnabled(false);
 }//GEN-LAST:event_jComboBoxDeporteItemStateChanged
 
 private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
+    LOG.trace(evt.paramString());
     this.dispose();
 }//GEN-LAST:event_jButtonCancelarActionPerformed
 
@@ -367,14 +371,19 @@ private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//G
     // End of variables declaration//GEN-END:variables
 
     public void mostrarEquipo() {
+        LOG.info("Loading team information");
         if (inscritosIni != inscritos) {
-            if (guardado == false) {
+            if (!guardado) {
                 int i = JOptionPane.showConfirmDialog(this,
-                        "Ha editado al equipo de " + equipoTemporal.getDeporte() + ", ¿desea guardar los cambios?", "Advertencia", JOptionPane.YES_NO_OPTION);
+                        "Ha editado al equipo de " + equipoTemporal.getDeporte() + "del país" + equipoTemporal.getPais()
+                                + ", ¿desea guardar los cambios?", "Advertencia",
+                        JOptionPane.YES_NO_OPTION);
                 if (i == JOptionPane.YES_OPTION) {
                     guardar();
                 }
             }
+        } else {
+            LOG.debug("Inscribed players: Po={} Pf={}", inscritosIni, inscritos);
         }
         String nombreDeporte = jComboBoxDeporte.getSelectedItem().toString();
         String nombrePais = jComboBoxPais.getSelectedItem().toString();
@@ -391,8 +400,8 @@ private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//G
         limite = equipoTemporal.getLimiteDeportistas();
         inscritos = equipoTemporal.tamaño();
         inscritosIni = equipoTemporal.tamaño();
-        jTextFieldInscritos.setText(inscritos + "");
-        jTextFieldLimiteDeportistas.setText(limite + "");
+        jTextFieldInscritos.setText(String.valueOf(inscritos));
+        jTextFieldLimiteDeportistas.setText(String.valueOf(limite));
         jButtonMostrar.setEnabled(false);
         guardado = false;
     }
@@ -423,8 +432,10 @@ private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//G
     private void guardar() {
         modificado = true;
         deporteTemporal.eliminarEquipo(equipoTemporal.getPais());
-        boolean agregado = deporteTemporal.agregarEquipo(equipoTemporal);
-        if (agregado == false) {
+        boolean added = deporteTemporal.agregarEquipo(equipoTemporal);
+        if (added) {
+            LOG.info("Can't save new team for sport {}", deporteTemporal.getNombre());
+        } else {
             int opcion = JOptionPane.showConfirmDialog(this,
                     "La lista de participantes de " + equipoTemporal.getDeporte() + " está completa\n "
                     + "si quiere inscribir a un equipo de esta delegación, tendrá\n"

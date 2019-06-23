@@ -1,4 +1,4 @@
-package pe.edu.unmsm.fisi.clases;
+package pe.edu.unmsm.fisi.utils;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,7 +40,7 @@ public class Metodos {
     }
 
     public static void deshabilitarPanel(JPanel jPanel) {
-        Component components[] = jPanel.getComponents();
+        Component[] components = jPanel.getComponents();
         for (Component c : components) {
             if (c instanceof JScrollPane) {
                 JScrollPane jsp = (JScrollPane) c;
@@ -53,5 +53,13 @@ public class Metodos {
 
     public static int random(int rango) {
         return (int) Math.round(Math.random() * rango);
+    }
+
+    public static int deStringInteger(String cadena) {
+        try {
+            return Integer.parseInt(cadena);
+        } catch (NumberFormatException nfe) {
+            return -1;
+        }
     }
 }

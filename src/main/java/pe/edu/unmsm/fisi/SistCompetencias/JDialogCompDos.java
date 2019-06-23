@@ -4,7 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pe.edu.unmsm.fisi.clases.Competencia;
 import pe.edu.unmsm.fisi.clases.Equipo;
-import pe.edu.unmsm.fisi.clases.Metodos;
+import pe.edu.unmsm.fisi.utils.Metodos;
 import javax.swing.JOptionPane;
 import java.util.Observable;
 import pe.edu.unmsm.fisi.SistEventos.JDialogPartidosPendientes;

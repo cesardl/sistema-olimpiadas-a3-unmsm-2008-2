@@ -1,16 +1,22 @@
 package pe.edu.unmsm.fisi.SistInscripcion;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import pe.edu.unmsm.fisi.clases.Deportista;
 import pe.edu.unmsm.fisi.clases.Fecha;
+import pe.edu.unmsm.fisi.utils.Metodos;
+
+import javax.swing.*;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.Observable;
 import java.util.Vector;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JOptionPane;
 
 public class JDialogDeportista extends javax.swing.JDialog {
+
+    private static final Logger LOG = LoggerFactory.getLogger(JDialogCentroInscripciones.class);
 
     private Observable o;
     private DefaultComboBoxModel dcbmDeporte;
@@ -308,8 +314,9 @@ public class JDialogDeportista extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
 private void jButtonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarActionPerformed
-    if (deStringInteger(jTextFieldTalla.getText()) == -1
-            || deStringInteger(jTextFieldPeso.getText()) == -1) {
+    LOG.trace(evt.paramString());
+    if (Metodos.deStringInteger(jTextFieldTalla.getText()) == -1
+            || Metodos.deStringInteger(jTextFieldPeso.getText()) == -1) {
         JOptionPane.showMessageDialog(this, "ingrese correctamente los datos",
                 "Error", JOptionPane.ERROR_MESSAGE);
     } else {
@@ -319,14 +326,14 @@ private void jButtonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GE
         d.setCodigo(jTextFieldCodigo.getText());
         d.setNombres(jTextFieldNombre.getText());
         d.setApellidos(jTextFieldApellido.getText());
-        boolean sexo = jRadioButtonMasculino.isSelected() ? true : false;
+        boolean sexo = jRadioButtonMasculino.isSelected();
         d.setSexo(sexo);
-        d.setTalla(deStringInteger(jTextFieldTalla.getText()));
-        d.setPeso(Integer.parseInt(jTextFieldPeso.getText()));
+        d.setTalla(Metodos.deStringInteger(jTextFieldTalla.getText()));
+        d.setPeso(Metodos.deStringInteger(jTextFieldPeso.getText()));
 
-        int dia = Integer.parseInt(String.valueOf(jComboBoxDia.getSelectedItem()));
+        int dia = Metodos.deStringInteger(String.valueOf(jComboBoxDia.getSelectedItem()));
         int mes = jComboBoxMes.getSelectedIndex();
-        int anio = Integer.parseInt(String.valueOf(jComboBoxAño.getSelectedItem()));
+        int anio = Metodos.deStringInteger(String.valueOf(jComboBoxAño.getSelectedItem()));
         d.setNacimiento(new Fecha(dia, mes, anio));
         d.setDeporte(String.valueOf(jComboBoxDeporte.getSelectedItem()));
         d.setPais(String.valueOf(jComboBoxPais.getSelectedIndex()));
@@ -340,10 +347,12 @@ private void jButtonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GE
 }//GEN-LAST:event_jButtonGuardarActionPerformed
 
 private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
+    LOG.trace(evt.paramString());
     this.dispose();
 }//GEN-LAST:event_jButtonCancelarActionPerformed
 
 private void jButtonGenerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGenerarActionPerformed
+    LOG.trace(evt.paramString());
     String str1, str2;
     if (posDeporte < 10) {
         str1 = 0 + String.valueOf(posDeporte + 1);
@@ -379,14 +388,6 @@ private void jButtonGenerarActionPerformed(java.awt.event.ActionEvent evt) {//GE
     private javax.swing.JTextField jTextFieldTalla;
     // End of variables declaration//GEN-END:variables
 
-    public int deStringInteger(String cadena) {
-        try {
-            return Integer.parseInt(cadena);
-        } catch (NumberFormatException nfe) {
-            return -1;
-        }
-    }
-
     public void llenarComboBox() {
         dcbmDeporte = new DefaultComboBoxModel();
         dcbmPais = new DefaultComboBoxModel();
@@ -400,9 +401,9 @@ private void jButtonGenerarActionPerformed(java.awt.event.ActionEvent evt) {//GE
 
         }
         String dir = System.getProperty("user.dir");
-        File fileDeporte = new File(dir + "//src//Extras//deportes.obj");
-        File filePais = new File(dir + "//src//Extras//paises.obj");
-        File fileMes = new File(dir + "//src//Extras//meses.obj");
+        File fileDeporte = new File(dir + "//src//main//resources//Extras//deportes.obj");
+        File filePais = new File(dir + "//src//main//resources//Extras//paises.obj");
+        File fileMes = new File(dir + "//src//main//resources//Extras//meses.obj");
         try {
             FileInputStream fisDeporte = new FileInputStream(fileDeporte);
             FileInputStream fisPais = new FileInputStream(filePais);
@@ -422,7 +423,8 @@ private void jButtonGenerarActionPerformed(java.awt.event.ActionEvent evt) {//GE
             for (int i = 0; i < vMes.size(); i++) {
                 jComboBoxMes.addItem(vMes.get(i));
             }
-        } catch (Exception ex) {
+        } catch (IOException | ClassNotFoundException ex) {
+            LOG.error(ex.getMessage(), ex);
         }
     }
 

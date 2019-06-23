@@ -2,6 +2,7 @@ package pe.edu.unmsm.fisi.clases;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import pe.edu.unmsm.fisi.utils.Metodos;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -30,9 +31,10 @@ public class ListaDeportes implements Serializable {
             oisDeporte.close();
             oisTeamSize.close();
             for (int i = 0; i < vDeporte.size(); i++) {
-                int teamSize = Integer.parseInt(vTeamSize.get(i).toString().trim());
+                int teamSize = Metodos.deStringInteger(vTeamSize.get(i).toString().trim());
                 listaDeportes.add(new Deporte((String) vDeporte.get(i), 16, teamSize));
             }
+            LOG.info("Loaded {} sports", listaDeportes.size());
         } catch (IOException | ClassNotFoundException | NumberFormatException ex) {
             LOG.error(ex.getMessage(), ex);
         }

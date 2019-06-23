@@ -28,6 +28,7 @@ public class ListaPaises {
             for (Object vPai : vPais) {
                 listaPaises.add(new Pais((String) vPai));
             }
+            LOG.info("Loaded {} sports", listaPaises.size());
         } catch (IOException | ClassNotFoundException ex) {
             LOG.error(ex.getMessage(), ex);
         }

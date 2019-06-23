@@ -2,6 +2,7 @@ package pe.edu.unmsm.fisi.clases;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import pe.edu.unmsm.fisi.utils.Metodos;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -26,10 +27,11 @@ public class ListaEventos {
             oisEpc.close();
             for (int i = 0; i < listaDeportes.size(); i++) {
                 nombre = listaDeportes.getDeporte(i).getNombre();
-                int epc = Integer.parseInt(vEpc.get(i).toString().trim());
+                int epc = Metodos.deStringInteger(vEpc.get(i).toString().trim());
                 listaEquipos = listaDeportes.getDeporte(i).getListaEquipos();
                 listaEventos.add(new Evento(nombre, listaEquipos, epc));
             }
+            LOG.info("Loaded {} sports", listaEventos.size());
         } catch (IOException | ClassNotFoundException | NumberFormatException e) {
             LOG.error(e.getMessage(), e);
         }

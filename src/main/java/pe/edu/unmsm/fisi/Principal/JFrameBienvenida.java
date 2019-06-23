@@ -11,9 +11,8 @@ public class JFrameBienvenida extends javax.swing.JFrame {
 
     private static final Logger LOG = LoggerFactory.getLogger(JFrameBienvenida.class);
 
-    private JDialogSplash GUICargar;
     private String id;
-    private transient String pass;
+    private String pass;
 
     public JFrameBienvenida() {
         initComponents();
@@ -21,7 +20,7 @@ public class JFrameBienvenida extends javax.swing.JFrame {
         id = "fisi";
         pass = "algoritmica";
 
-        pe.edu.unmsm.fisi.clases.Metodos.centrarVentana(this);
+        pe.edu.unmsm.fisi.utils.Metodos.centrarVentana(this);
     }
 
     @SuppressWarnings("unchecked")
@@ -142,14 +141,17 @@ private void jButtonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GE
 }//GEN-LAST:event_jButtonAceptarActionPerformed
 
 private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
+    LOG.trace(evt.paramString());
     System.exit(0);
 }//GEN-LAST:event_jButtonCancelarActionPerformed
 
 private void jPasswordFieldPswdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordFieldPswdActionPerformed
+    LOG.trace(evt.paramString());
     aceptar();
 }//GEN-LAST:event_jPasswordFieldPswdActionPerformed
 
 private void jTextFieldUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldUserActionPerformed
+    LOG.trace(evt.paramString());
     aceptar();
 }//GEN-LAST:event_jTextFieldUserActionPerformed
 
@@ -161,13 +163,11 @@ private void jTextFieldUserActionPerformed(java.awt.event.ActionEvent evt) {//GE
     private boolean SecuenciaValidacion() {
         String cuenta = jTextFieldUser.getText().trim();
         String contrasenia = new String(jPasswordFieldPswd.getPassword());
-        try {
-            GUICargar = new JDialogSplash(null, ModalityType.APPLICATION_MODAL);
-            GUICargar.setLocationRelativeTo(this);
-            GUICargar.setVisible(true);
-        } catch (Exception e) {
-            LOG.error(e.getMessage(), e);
-        }
+
+        JDialogSplash jDialogSplash = new JDialogSplash(this, ModalityType.APPLICATION_MODAL);
+        jDialogSplash.setLocationRelativeTo(this);
+        jDialogSplash.setVisible(true);
+
         if (cuenta.equals(id) && contrasenia.equals(pass)) {
             LOG.info("Logging successful");
             return true;
@@ -188,6 +188,7 @@ private void jTextFieldUserActionPerformed(java.awt.event.ActionEvent evt) {//GE
                 JFramePrincipal vPrincipal = new JFramePrincipal();
                 vPrincipal.setLocationRelativeTo(this);
                 vPrincipal.setVisible(true);
+
                 this.dispose();
             } else {
                 limpiar();

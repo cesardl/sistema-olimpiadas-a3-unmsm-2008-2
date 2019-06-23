@@ -24,7 +24,7 @@ public class JDialogCentroInscripciones extends javax.swing.JDialog implements O
     private final ListaPaises listaPaises;
     private ListaDeportes listaDeportes;
 
-    public JDialogCentroInscripciones(ListaDeportes bd) {
+    public JDialogCentroInscripciones(final ListaDeportes bd) {
         listaDeportes = bd;
         o = new Observable();
         vp = new JFramePrincipal();
@@ -220,7 +220,7 @@ private void jComboBoxPaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN
         for (int j = 0; j < d.teamsSize(); j++) {
             e = d.getEquipo(j);
             if (e.getPais().trim().equals(countryName)) {
-                LOG.info("Loading information of {}",countryName);
+                LOG.info("Loading information of {}", countryName);
                 dlmDelegacion.addElement(e.getDeporte());
                 jTextFieldLimite.setText(String.valueOf(e.getLimiteDeportistas()));
             }
